@@ -1,9 +1,7 @@
 <template>
-  <div class="hello">
+  <div class="blog">
     <img src="../assets/logo.png">
     <div>
-      <router-link to="/means">想法</router-link>
-      <router-link to="/person">个人</router-link>
       <router-view></router-view>
     </div>
   </div>

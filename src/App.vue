@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <router-link to="/Foo">Foo</router-link>
-    <router-link to="/Bar">Bar</router-link>
-    <router-view/>
+    <Index></Index>
   </div>
 </template>
 
 <script>
+  import Index from './components/Index'
   export default {
     name: 'App',
     methods: {},
+    components: {
+      Index
+    }
   }
+
 </script>
 
 <style>
@@ -20,6 +23,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    /* margin-top: 60px; */
   }
+
 </style>

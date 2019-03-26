@@ -1,6 +1,6 @@
 <template>
-  <div class="person">
-         Person
+  <div class="note">
+         Means
   </div>
 </template>
 

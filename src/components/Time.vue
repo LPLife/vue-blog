@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-         Means
+  <div class="time">
+        Foo
   </div>
 </template>
 
