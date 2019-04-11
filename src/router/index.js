@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Blog from '@/components/Blog'
-import Note from '@/components/Note'
-import Person from '@/components/Person'
-import Index from '@/components/Index'
-import Time from '@/components/Time'
+import Home from '@/views/Home'
+import Blog from '@/views/Blog'
+import Note from '@/views/Note'
+import Person from '@/views/Person'
+import Index from '@/views/Index'
+import Time from '@/views/Time'
+import Photo from '@/views/Photo'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/Person',
       name: 'Person',
       component: Person,
+    },
+    {
+      path: '/Photo',
+      name: 'Photo',
+      component: Photo,
     }
   ]
 })

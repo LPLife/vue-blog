@@ -1,6 +1,6 @@
 <template>
   <div class="photo">
-        Foo
+        Foos
   </div>
 </template>
 
