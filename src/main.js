@@ -7,7 +7,7 @@ import axios from 'axios'
 import './assets/style/reset.less'
 Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
-        console.log(to.path);
+        console.log(to);
         console.log(from);
         next();
     })
