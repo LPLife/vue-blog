@@ -6,8 +6,12 @@ import router from './router'
 import axios from 'axios'
 import './assets/style/reset.less'
 Vue.config.productionTip = false
-
-/* eslint-disable no-new */
+router.beforeEach((to, from, next) => {
+        console.log(to.path);
+        console.log(from);
+        next();
+    })
+    /* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
