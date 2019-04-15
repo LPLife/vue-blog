@@ -28,90 +28,119 @@
           <router-link to="/Person">关于我</router-link>
         </li>
         <li>
-        <li class="home"><img src="../../assets/icon07.png" class="i-img">
-          <router-link to="/Person">注销</router-link>
+        <li class="home" @click="close()"><img src="../../assets/icon07.png" class="i-img">
+          登录
         </li>
       </ul>
     </div>
+    <Dialog v-if="showDialog">
+        <div slot="login" class="login-from" >
+          <div>
+            欢迎登陆
+          </div>
+          <div class="from">
+            <label>姓名</label>
+            <input type="text" name="username" id="">
+          </div>
+          <div class="from">
+            <label>密码</label>
+            <input type="text" name="password" id="">
+          </div>
+        </div>
+      </Dialog>
     <router-view />
   </div>
 </template>
 <script>
   import axios from 'axios'
   import slider from 'vue-concise-slider'
+  import Dialog from '../Dialog/index'
+
   export default {
     data() {
       return {
         msg: "Welcome to Your Vue.js App",
-         pages:[
-          {
+        showDialog: false,
+        pages: [{
             title: '',
-            style:{
-             background:'url(../../assets/lb01.png)'
+            style: {
+              background: 'url(../../assets/lb01.png)'
             }
           },
           {
-           title: '',
-           style:{
-            background:'url(../../assets/lb01.png)'
+            title: '',
+            style: {
+              background: 'url(../../assets/lb01.png)'
             }
           },
           {
             title: 'slide3',
-            style:{
-              background:'#4bbfc3',
+            style: {
+              background: '#4bbfc3',
             },
           }
-         ]
-    }
+        ]
+      }
+    },
+ components: {
+      Dialog
+    },
+    methods: {
+      close() {
+        if (!this.showDialog) {
+          this.showDialog = true;
+        } else {
+          this.showDialog = false;
+        }
 
-    ,
+      }
+    },
     created() {
       console.log(1);
       //get请求
+      // axios({
 
-      axios({
+      //     method: 'GET',
+      //     url: 'http://localhost:8888/api/user',
+      //     params: {
+      //       age: 1
+      //     }
 
-          method: 'GET',
-          url: 'http://localhost:8888/api/user',
-          params: {
-            age: 1
-          }
+      //     ,
+      //     dataType: 'json'
+      //   }
 
-          ,
-          dataType: 'json'
-        }
+      // ).then(res => {
+      //     console.log(res);
+      //   }
 
-      ).then(res => {
-          console.log(res);
-        }
+      // ).catch(err => {}
 
-      ).catch(err => {}
+      // ) 
+      //post请求
 
-      ) //post请求
+      // axios({
 
-      axios({
+      //     method: 'post',
+      //     url: 'http://localhost:8888/api/delete',
+      //     data: {
+      //       name: 'lihua',
+      //       age: '45'
+      //     }
+      //   }
 
-          method: 'post',
-          url: 'http://localhost:8888/api/delete',
-          data: {
-            name: 'lihua',
-            age: '45'
-          }
-        }
+      // ).then(res => {
+      //     console.log(res);
 
-      ).then(res => {
-          console.log(res);
+      //   }
 
-        }
+      // ).catch(err => {
 
-      ).catch(err => {}
+        // }
 
-      );
+      // );
     }
   }
-
-  ;
 
 </script>
 < !-- Add "scoped" attribute to limit CSS to this component only -->
@@ -120,6 +149,7 @@
       display: flex;
       flex-direction: column;
     }
+
     .header {
       padding: 8px 32px;
       background-color: azure;
@@ -159,6 +189,15 @@
         }
       }
 
+    }
+
+    .login-from {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: aliceblue;
+      width: 400px;
+      height: 400px;
     }
 
   </style>
