@@ -34,20 +34,28 @@
       </ul>
     </div>
     <Dialog v-if="showDialog">
-        <div slot="login" class="login-from" >
-          <div>
-            欢迎登陆
+      <div slot="login" class="login-from">
+        <div class="title">
+          欢迎登陆
+        </div>
+        <div class="from">
+          <label>姓名：</label>
+          <input type="text" name="username" id="">
+        </div>
+        <div class="from">
+          <label>密码：</label>
+          <input type="text" name="password" id="">
+        </div>
+        <div class="from">
+          <div class="botton">
+            登录
           </div>
-          <div class="from">
-            <label>姓名</label>
-            <input type="text" name="username" id="">
-          </div>
-          <div class="from">
-            <label>密码</label>
-            <input type="text" name="password" id="">
+          <div class="botton">
+            注册
           </div>
         </div>
-      </Dialog>
+      </div>
+    </Dialog>
     <router-view />
   </div>
 </template>
@@ -82,7 +90,7 @@
         ]
       }
     },
- components: {
+    components: {
       Dialog
     },
     methods: {
@@ -136,7 +144,7 @@
 
       // ).catch(err => {
 
-        // }
+      // }
 
       // );
     }
@@ -195,9 +203,38 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background-color: aliceblue;
+      background: linear-gradient(to bottom, aliceblue, blue);
       width: 400px;
       height: 400px;
+    }
+
+    .title {
+      margin-bottom: 16px;
+    }
+
+    .from {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:nth-of-type(4) {}
+
+      margin-bottom: 16px;
+
+      .botton {
+        width: 100px;
+        height: 32px;
+        margin-left: 10px;
+        line-height: 32px;
+        background: aliceblue;
+        border-radius: 16px;
+      }
+
+      input {
+        width: 160px;
+        height: 20px;
+        outline: orange;
+      }
     }
 
   </style>

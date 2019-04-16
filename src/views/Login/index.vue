@@ -2,7 +2,7 @@
   <div class="login">
     login
     <Dialog v-if="showDialog">
-      <div slot="login" class="login-from"  @click="close()">
+      <div slot="login" class="login-from" @click="close()">
         <div>
           欢迎登陆
         </div>
@@ -13,6 +13,11 @@
         <div class="from">
           <label>密码</label>
           <input type="text" name="password" id="">
+        </div>
+        <div class="from">
+          <div class="botton">
+            登录
+          </div>
         </div>
       </div>
     </Dialog>
@@ -51,11 +56,21 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+<style scoped lang="less">
 
-}
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+  .from {
+    .botton {
+      width: 286px;
+      height: 88px;
+      background: linear-gradient(to right, red , blue); 
+    }
+  }
+
 </style>
