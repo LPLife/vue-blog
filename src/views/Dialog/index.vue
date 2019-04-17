@@ -2,6 +2,8 @@
   <div class="dialog" v-if="showDialog">
     <img class="close-img" src="../../assets/close.png" @click="close">
     <slot name="login"></slot>
+    <slot name="tip"></slot>
+
   </div>
 </template>
 

@@ -34,26 +34,29 @@
       </ul>
     </div>
     <Dialog v-if="showDialog">
-      <div slot="login" class="login-from">
+      <div slot="login" class="login-from" v-if="showLoginDialog">
         <div class="title">
           欢迎登陆
         </div>
         <div class="from">
           <label>姓名：</label>
-          <input type="text" name="username" id="">
+          <input type="text" name="username" v-model="username">
         </div>
         <div class="from">
           <label>密码：</label>
-          <input type="text" name="password" id="">
+          <input type="text" name="password" v-model="password" @change="changPassword()">
         </div>
         <div class="from">
-          <div class="botton">
+          <div class="botton" @click="login()">
             登录
           </div>
           <div class="botton">
             注册
           </div>
         </div>
+      </div>
+      <div slot="tip" v-if="showtipDialog">
+        {{tip}}
       </div>
     </Dialog>
     <router-view />
@@ -69,6 +72,11 @@
       return {
         msg: "Welcome to Your Vue.js App",
         showDialog: false,
+        showtipDialog: false,
+        username: '',
+        password: '',
+        flat: false,
+        tip: '',
         pages: [{
             title: '',
             style: {
@@ -96,9 +104,39 @@
     methods: {
       close() {
         if (!this.showDialog) {
+          this.showLoginDialog = true;
           this.showDialog = true;
         } else {
           this.showDialog = false;
+        }
+
+      },
+      changName() {
+
+      },
+      changPassword() {
+
+      },
+      filterAll() {
+        if (this.password.length < 6 || this.password.length > 12) {
+          this.showtipDialog = true;
+          this.tip = "密码长度要大于1且小于或等于11";
+          return;
+        } else {
+          this.tip = " ";
+          this.flat = true;
+        }
+        console.log(this.flat);
+        return this.flat;
+      },
+      login() {
+        if (this.filterAll()) {
+          console.log('登录成功');
+
+        } else {
+          this.showtipDialog = true;
+          console.log('登录失败');
+          return;
         }
 
       }
@@ -160,7 +198,7 @@
 
     .header {
       padding: 8px 32px;
-      background-color: azure;
+      background: linear-gradient(to bottom, azure, #6883ff);
     }
 
     ul {
@@ -168,7 +206,7 @@
       justify-content: space-between;
       flex-direction: row;
       align-items: center;
-      height: 40px;
+      height: 50px;
 
 
       li {
@@ -176,6 +214,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: #fff;
 
         &:nth-of-type(1) {
           img {
@@ -185,15 +224,16 @@
         }
 
         .i-img {
-          width: 20px;
-          height: 20px;
+          width: 30px;
+          height: 30px;
           background-size: 100% 100%;
-          margin-bottom: 2px;
+          margin: 8px 0;
         }
 
         a {
-          font-size: 14px;
+          font-size: 18px;
           text-decoration: none;
+          color: #fff;
         }
       }
 
