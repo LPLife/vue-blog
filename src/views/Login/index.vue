@@ -8,14 +8,15 @@
         </div>
         <div class="from">
           <label>姓名</label>
-          <input type="text" name="username" id="">
+          <input type="text" v-model="username" id="" @change="changeUsername(username)">
+          {{username}}
         </div>
         <div class="from">
           <label>密码</label>
-          <input type="text" name="password" id="">
+          <input type="text" v-model="password" id="" @change="changePassword(password)">
         </div>
         <div class="from">
-          <div class="botton">
+          <div class="botton" @click="toLogin">
             登录
           </div>
         </div>
@@ -32,7 +33,9 @@
     data() {
       return {
         msg: 'Welcome to Your Vue.js App',
-        showDialog: true
+        showDialog: true,
+        username:'',
+        password:''
       }
     },
     components: {
@@ -46,6 +49,12 @@
           this.showDialog = false;
         }
 
+      },
+      changeUsername(username) {
+           console.log(username+'0');
+      },
+      changePassword(password) {
+           console.log(password);
       }
     },
     mounted: {

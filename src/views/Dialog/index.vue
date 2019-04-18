@@ -18,6 +18,11 @@
     },
     methods: {
       close() {
+        if(event) {
+
+        event.stopPropagation ? event.stopPropagation(): event.cancelBubble = true;
+
+    }
         this.showDialog = false;
       }
     },

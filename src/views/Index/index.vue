@@ -38,13 +38,16 @@
         <div class="title">
           欢迎登陆
         </div>
+        <div slot="tip" v-if="showtipDialog" class="tip">
+          {{tip}}
+        </div>
         <div class="from">
           <label>姓名：</label>
-          <input type="text" name="username" v-model="username">
+          <input type="text"  v-model="username">
         </div>
         <div class="from">
           <label>密码：</label>
-          <input type="text" name="password" v-model="password" @change="changPassword()">
+          <input type="text"  v-model="password">
         </div>
         <div class="from">
           <div class="botton" @click="login()">
@@ -55,9 +58,7 @@
           </div>
         </div>
       </div>
-      <div slot="tip" v-if="showtipDialog">
-        {{tip}}
-      </div>
+
     </Dialog>
     <router-view />
   </div>
@@ -111,12 +112,7 @@
         }
 
       },
-      changName() {
 
-      },
-      changPassword() {
-
-      },
       filterAll() {
         if (this.password.length < 6 || this.password.length > 12) {
           this.showtipDialog = true;
@@ -126,7 +122,6 @@
           this.tip = " ";
           this.flat = true;
         }
-        console.log(this.flat);
         return this.flat;
       },
       login() {
@@ -249,7 +244,7 @@
     }
 
     .title {
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
 
     .from {
@@ -275,6 +270,11 @@
         height: 20px;
         outline: orange;
       }
+    }
+
+    .tip {
+      color: red;
+      margin: 4px 0;
     }
 
   </style>
