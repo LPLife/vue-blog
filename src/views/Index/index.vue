@@ -3,7 +3,6 @@
 
     <div class="header">
       <ul>
-        <li class="home"><img src="../../assets/icon08.png" class="i-img"></li>
         <li class="home"><img src="../../assets/icon01.png" class="i-img">
           <router-link to="/Home">首页</router-link>
         </li>
@@ -43,11 +42,11 @@
         </div>
         <div class="from">
           <label>姓名：</label>
-          <input type="text"  v-model="username">
+          <input type="text" v-model="username">
         </div>
         <div class="from">
           <label>密码：</label>
-          <input type="text"  v-model="password">
+          <input type="text" v-model="password">
         </div>
         <div class="from">
           <div class="botton" @click="login()">
@@ -58,7 +57,6 @@
           </div>
         </div>
       </div>
-
     </Dialog>
     <router-view />
   </div>
@@ -114,7 +112,7 @@
       },
 
       filterAll() {
-        if (this.password.length < 6 || this.password.length > 12) {
+        if (this.password.length < 5 || this.password.length > 12) {
           this.showtipDialog = true;
           this.tip = "密码长度要大于1且小于或等于11";
           return;
@@ -126,7 +124,33 @@
       },
       login() {
         if (this.filterAll()) {
-          console.log('登录成功');
+          console.log('用户信息录入成功！');
+          axios({
+              method: 'post',
+              url: 'http://localhost:8080/api/user/login',
+              data: {
+                username: this.username,
+                password: this.password
+              }
+            }
+
+          ).then(res => {
+              if (res.data.code === "1000") {
+                this.showtipDialog = true;
+                this.tip = "用户名或者密码错误，请检查您的用户名或者密码！";
+                return;
+              } else {
+                this.showtipDialog = false;
+                this.showDialog = false;
+                this.tip = "";
+              }
+            }
+
+          ).catch(err => {
+
+            }
+
+          );
 
         } else {
           this.showtipDialog = true;
@@ -137,49 +161,6 @@
       }
     },
     created() {
-      console.log(1);
-      //get请求
-      // axios({
-
-      //     method: 'GET',
-      //     url: 'http://localhost:8888/api/user',
-      //     params: {
-      //       age: 1
-      //     }
-
-      //     ,
-      //     dataType: 'json'
-      //   }
-
-      // ).then(res => {
-      //     console.log(res);
-      //   }
-
-      // ).catch(err => {}
-
-      // ) 
-      //post请求
-
-      // axios({
-
-      //     method: 'post',
-      //     url: 'http://localhost:8888/api/delete',
-      //     data: {
-      //       name: 'lihua',
-      //       age: '45'
-      //     }
-      //   }
-
-      // ).then(res => {
-      //     console.log(res);
-
-      //   }
-
-      // ).catch(err => {
-
-      // }
-
-      // );
     }
   }
 

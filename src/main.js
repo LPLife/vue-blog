@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import './assets/style/reset.less'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+Vue.use(mavonEditor)
 Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
         console.log(to);

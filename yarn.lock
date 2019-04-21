@@ -1033,7 +1033,7 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
 
 body-parser@1.18.3, body-parser@^1.18.3:
   version "1.18.3"
-  resolved "http://npm.mmclick.com/body-parser/-/body-parser-1.18.3.tgz#5b292198ffdd553b3a0f20ded0592b956955c8b4"
+  resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.3.tgz#5b292198ffdd553b3a0f20ded0592b956955c8b4"
   integrity sha1-WykhmP/dVTs6DyDe0FkrlWlVyLQ=
   dependencies:
     bytes "3.0.0"
@@ -2988,6 +2988,16 @@ he@1.2.x, he@^1.1.0:
   resolved "http://registry.npm.taobao.org/he/download/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
 
+highlight.js-async-webpack@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/highlight.js-async-webpack/-/highlight.js-async-webpack-1.0.4.tgz#c06b67bf99f049045d62b756e5855b0912ec616c"
+  integrity sha1-wGtnv5nwSQRdYrdW5YVbCRLsYWw=
+
+highlight.js@^9.11.0:
+  version "9.15.6"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.6.tgz#72d4d8d779ec066af9a17cb14360c3def0aa57c4"
+  integrity sha512-zozTAWM1D6sozHo8kqhfYgsac+B+q0PmsjXeyDrYIHHcBN0zTVT66+s2GW1GZv7DbyaROdLXKdabwS/WqPyIdQ==
+
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/hmac-drbg/download/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -3094,6 +3104,16 @@ http-parser-js@>=0.4.0:
   resolved "http://registry.npm.taobao.org/http-parser-js/download/http-parser-js-0.5.0.tgz#d65edbede84349d0dc30320815a15d39cc3cbbd8"
   integrity sha1-1l7b7ehDSdDcMDIIFaFdOcw8u9g=
 
+http-proxy-middleware@^0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-0.19.1.tgz#183c7dc4aa1479150306498c210cdaf96080a43a"
+  integrity sha512-yHYTgWMQO8VvwNS22eLLloAkvungsKdKTLO8AJlftYIKNfJr3GK3zK0ZCfzDDGUBttdGc8xFy1mCitvNKQtC3Q==
+  dependencies:
+    http-proxy "^1.17.0"
+    is-glob "^4.0.0"
+    lodash "^4.17.11"
+    micromatch "^3.1.10"
+
 http-proxy-middleware@~0.17.4:
   version "0.17.4"
   resolved "http://registry.npm.taobao.org/http-proxy-middleware/download/http-proxy-middleware-0.17.4.tgz#642e8848851d66f09d4f124912846dbaeb41b833"
@@ -3104,7 +3124,7 @@ http-proxy-middleware@~0.17.4:
     lodash "^4.17.2"
     micromatch "^2.3.11"
 
-http-proxy@^1.16.2:
+http-proxy@^1.16.2, http-proxy@^1.17.0:
   version "1.17.0"
   resolved "http://registry.npm.taobao.org/http-proxy/download/http-proxy-1.17.0.tgz#7ad38494658f84605e2f6db4436df410f4e5be9a"
   integrity sha1-etOElGWPhGBeL220Q230EPTlvpo=
@@ -3899,6 +3919,14 @@ math-random@^1.0.1:
   version "1.0.4"
   resolved "http://registry.npm.taobao.org/math-random/download/math-random-1.0.4.tgz#5dd6943c938548267016d4e34f057583080c514c"
   integrity sha1-XdaUPJOFSCZwFtTjTwV1gwgMUUw=
+
+mavon-editor@^2.7.3:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/mavon-editor/-/mavon-editor-2.7.3.tgz#24e72bc36bd7071389d6fe7cea859bf0fe010d91"
+  integrity sha512-AFe/UTsz/ztm/NS61aRh8SpAnXA+VLnHyH/+SZRdb97UAJVUCdOXjEEYxiFre4eZUU/ZFKJIPiVYk9qg3CeB3g==
+  dependencies:
+    highlight.js "^9.11.0"
+    highlight.js-async-webpack "^1.0.4"
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -6543,8 +6571,8 @@ vm-browserify@0.0.4:
 
 vue-concise-slider@^3.3.9:
   version "3.3.9"
-  resolved "http://npm.mmclick.com/vue-concise-slider/-/vue-concise-slider-3.3.9.tgz#8122987efd3ade7a20efccd62ace0b276de7cec7"
-  integrity sha1-gSKYfv063nog78zWKs4LJ23nzsc=
+  resolved "https://registry.yarnpkg.com/vue-concise-slider/-/vue-concise-slider-3.3.9.tgz#8122987efd3ade7a20efccd62ace0b276de7cec7"
+  integrity sha512-8bT3oPkN7wqigZ9i7xkA5viYvyvjO1HuLH0pzlQ7qvTMadQ3cT7wadvEdEJK7jQiSGS5tXfl3VODhoGnv6oZPA==
 
 vue-hot-reload-api@^2.2.0:
   version "2.3.3"
