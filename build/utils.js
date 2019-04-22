@@ -47,8 +47,7 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
-        fallback: 'vue-style-loader',
-        public
+        fallback: 'vue-style-loader'
       })
     } else {
       return ['vue-style-loader'].concat(loaders)

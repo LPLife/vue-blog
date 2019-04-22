@@ -41,20 +41,25 @@
           {{tip}}
         </div>
         <div class="from">
-          <label>姓名：</label>
-          <input type="text" v-model="username">
+          <input type="text" v-model="username" placeholder="用户名">
         </div>
         <div class="from">
-          <label>密码：</label>
-          <input type="text" v-model="password">
+          <input type="text" v-model="password" placeholder="密码">
         </div>
-        <div class="from">
+        <div class="from" v-if="registerflat">
           <div class="botton" @click="login()">
             登录
           </div>
-          <div class="botton">
+        </div>
+        <div class="from" v-if="!registerflat">
+          <div class="botton" @click="register()">
             注册
           </div>
+        </div>
+        <div class="from">
+          <a @click="handleClick()" class="register">
+            还没注册 ？
+          </a>
         </div>
       </div>
     </Dialog>
@@ -65,7 +70,7 @@
   import axios from 'axios'
   import slider from 'vue-concise-slider'
   import Dialog from '../Dialog/index'
-
+  import apiConfig from '../../assets/js/api'
   export default {
     data() {
       return {
@@ -75,6 +80,7 @@
         username: '',
         password: '',
         flat: false,
+        registerflat: true,
         tip: '',
         pages: [{
             title: '',
@@ -127,7 +133,7 @@
           console.log('用户信息录入成功！');
           axios({
               method: 'post',
-              url: 'http://localhost:8080/api/user/login',
+              url: apiConfig.LOGIN,
               data: {
                 username: this.username,
                 password: this.password
@@ -158,10 +164,50 @@
           return;
         }
 
+      },
+      handleClick() {
+        this.registerflat = false;
+      },
+      register() {
+        if (this.filterAll()) {
+          console.log('用户注册成功！');
+          axios({
+              method: 'get',
+              url: apiConfig.REGISTER,
+              params: {
+                username: this.username,
+                password: this.password
+              }
+            }
+
+          ).then(res => {
+
+              if (res.data.code === "1000") {
+                this.showtipDialog = true;
+                this.tip = "用户名或者密码错误，请检查您的用户名或者密码！";
+                return;
+              } else {
+                this.showtipDialog = false;
+                this.tip = "注册成功";
+                this.registerflat = true;
+
+              }
+            }
+
+          ).catch(err => {
+
+            }
+
+          );
+
+        } else {
+          this.showtipDialog = true;
+          console.log('登录失败');
+          return;
+        }
       }
     },
-    created() {
-    }
+    created() {}
   }
 
 </script>
@@ -238,18 +284,23 @@
       margin-bottom: 16px;
 
       .botton {
-        width: 100px;
-        height: 32px;
+        width: 220px;
+        height: 30px;
         margin-left: 10px;
         line-height: 32px;
         background: aliceblue;
         border-radius: 16px;
       }
 
+      .register {
+        text-decoration: underline;
+      }
+
       input {
-        width: 160px;
-        height: 20px;
-        outline: orange;
+        width: 220px;
+        height: 30px;
+        border: none;
+        border-radius: 2px;
       }
     }
 

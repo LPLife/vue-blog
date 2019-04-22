@@ -17,12 +17,25 @@ app.all('*', function (req, res, next) {
 });
 // 配置服务端口
 //用户登录验证
-app.post('/api/user/login', function(req, res) {
-    console.log(req.body.username);
+app.post('/api/user/login', function(req, res) {    
     DatabaseOperation.select('user', {
         "username": req.body.username,
         "password": req.body.password
     }, function(result) {
+        if(result.length == 0) {
+            result = {
+                code:'1000'
+            }
+        }
+        res.json(result)
+    });
+});
+//用户注册
+app.get('/api/user/register', function(req, res) {    
+    DatabaseOperation.insert('user', [{
+        "username": req.query.username,
+        "password": req.query.password
+    },{unique:true}], function(result) {
         if(result.length == 0) {
             result = {
                 code:'1000'
