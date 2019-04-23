@@ -31,18 +31,26 @@ app.post('/api/user/login', function(req, res) {
     });
 });
 //用户注册
-app.get('/api/user/register', function(req, res) {    
-    DatabaseOperation.insert('user', [{
+app.get('/api/user/register', function(req, res) { 
+    DatabaseOperation.select('user', {
         "username": req.query.username,
-        "password": req.query.password
-    },{unique:true}], function(result) {
-        if(result.length == 0) {
+    }, function(result) {
+        if(result.length > 0) {
             result = {
-                code:'1000'
+                code:'1001'
             }
+            res.json(result);
+        }else{
+            DatabaseOperation.insert('user', [{
+                "username": req.query.username,
+                "password": req.query.password
+            }], function(result) {
+                res.json(result)
+            });
         }
-        res.json(result)
     });
+
+
 });
 const port = 8080;
 app.listen(port, () => {

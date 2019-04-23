@@ -57,8 +57,11 @@
           </div>
         </div>
         <div class="from">
-          <a @click="handleClick()" class="register">
+          <a @click="handleClick(1)" class="register" v-if="registerflat">
             还没注册 ？
+          </a>
+          <a @click="handleClick(2)" class="register" v-if="!registerflat">
+            去登录 ？
           </a>
         </div>
       </div>
@@ -165,8 +168,12 @@
         }
 
       },
-      handleClick() {
+      handleClick(index) {
+        if(index ==1 ){
         this.registerflat = false;
+        }else{
+        this.registerflat = true;
+        }
       },
       register() {
         if (this.filterAll()) {
@@ -185,6 +192,10 @@
               if (res.data.code === "1000") {
                 this.showtipDialog = true;
                 this.tip = "用户名或者密码错误，请检查您的用户名或者密码！";
+                return;
+              } else if(res.data.code === "1001"){
+                this.showtipDialog = true;
+                this.tip = "用户名重复!";
                 return;
               } else {
                 this.showtipDialog = false;
@@ -271,6 +282,7 @@
     }
 
     .title {
+      color: #fff;
       margin-bottom: 8px;
     }
 
@@ -288,11 +300,13 @@
         height: 30px;
         margin-left: 10px;
         line-height: 32px;
-        background: aliceblue;
         border-radius: 16px;
+        color: #fff;
+        background: linear-gradient(to bottom, #FFFFFF, blue);
       }
 
       .register {
+        color: #fff;
         text-decoration: underline;
       }
 
