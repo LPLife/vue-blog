@@ -7,7 +7,9 @@ import axios from 'axios'
 import './assets/style/reset.less'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import ElementUI from 'element-ui';
 Vue.use(mavonEditor)
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
         console.log(to);

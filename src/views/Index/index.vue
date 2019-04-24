@@ -47,12 +47,12 @@
           <input type="text" v-model="password" placeholder="密码">
         </div>
         <div class="from" v-if="registerflat">
-          <div class="botton" @click="login()">
+          <div class="botton-r" @click="login()">
             登录
           </div>
         </div>
         <div class="from" v-if="!registerflat">
-          <div class="botton" @click="register()">
+          <div class="botton-l" @click="register()">
             注册
           </div>
         </div>
@@ -295,16 +295,21 @@
 
       margin-bottom: 16px;
 
-      .botton {
+      .botton-r,
+      .botton-l {
         width: 220px;
         height: 30px;
         margin-left: 10px;
         line-height: 32px;
         border-radius: 16px;
         color: #fff;
+      }
+      .botton-l {
         background: linear-gradient(to bottom, #FFFFFF, blue);
       }
-
+      .botton-r {
+        background: linear-gradient(to bottom, #FFFFFF, #8A2BE2);
+      }
       .register {
         color: #fff;
         text-decoration: underline;
