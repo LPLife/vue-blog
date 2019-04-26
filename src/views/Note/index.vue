@@ -11,6 +11,20 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted(){
+    axios({
+    method: 'post',
+    url: 'http://xiny.wh66.cn/api/help/index',
+    data: {
+        token: ''
+    }
+}).then(res => {
+    res = res.data;
+    console.log(res);
+}).catch(err => {
+
+});
   }
 }
 </script>

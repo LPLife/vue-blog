@@ -320,6 +320,7 @@
         height: 30px;
         border: none;
         border-radius: 2px;
+        padding-left: 10px;
       }
     }
 
