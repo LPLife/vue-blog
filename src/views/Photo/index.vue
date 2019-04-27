@@ -1,41 +1,25 @@
 <template>
-  <div class="photo">
-        Foos
-        <textarea rows="6" id="myAddress" type="text" placeholder="请输入你要对他说的话,
-例如：我爱你"></textarea>
+  <div>
+        <el-upload
+            class="upload-demo"
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            multiple>
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+        </el-upload>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
-   mounted(){
-    axios({
-    method: 'post',
-    url: 'http://xiny.wh66.cn/api/help/index',
-    data: {
-        token: ''
-    }
-}).then(res => {
-    res = res.data;
-    console.log(res);
-}).catch(err => {
+   export default {
+    data() {
+      return {
+      };
+    },
+    methods: {
 
-});
+    }
   }
-}
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-textarea{
-width: 400px;
-}
-
-</style>
