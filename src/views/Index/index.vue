@@ -230,8 +230,8 @@
     }
 
     .header {
-      padding: 8px 32px;
-      background: linear-gradient(to bottom, azure, #6883ff);
+      padding: 0px 32px;
+      background: linear-gradient(to bottom, azure, #8da1ff);
     }
 
     ul {
@@ -239,7 +239,7 @@
       justify-content: space-between;
       flex-direction: row;
       align-items: center;
-      height: 50px;
+      height: 66px;
 
 
       li {
@@ -248,19 +248,15 @@
         justify-content: center;
         align-items: center;
         color: #fff;
-
-        &:nth-of-type(1) {
-          img {
-            width: 50px;
-            height: 40px;
-          }
-        }
+        background: hsla(227, 100%, 50%, 0.02);
+        width: 14%;
+        height: 100%;
 
         .i-img {
           width: 30px;
           height: 30px;
           background-size: 100% 100%;
-          margin: 8px 0;
+          padding-bottom: 6px;
         }
 
         a {

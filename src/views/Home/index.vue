@@ -1,9 +1,8 @@
 <template>
   <div class="app-container">
     <div class="lunbo">
-      <el-carousel :interval="4000" type="card" height="300px">
+      <el-carousel :interval="6000" type="card" height="300px">
         <el-carousel-item v-for="item in picList" :key="item">
-          <!-- <h3 class="medium">{{ item }}</h3> -->
           <img :src='item'/>
         </el-carousel-item>
       </el-carousel>
@@ -26,10 +25,10 @@
           part01,
           part02,
           part03,
-          part05,       
+          part05,
 
-   ]    
-        }      
+   ]
+        }
     },
     mounted() {
 
@@ -41,11 +40,11 @@
 </script>
 <style lang="less">
  .lunbo {
-  margin: 16px 0 ;
+  margin: 16px 0;
   overflow: hidden;
  }
  img{
-   height: 100%;
+  height: 100%;
   width: 100%;
  }
  .el-carousel__item h3 {
@@ -55,13 +54,13 @@
     line-height: 200px;
     margin: 0;
   }
-  
+
   .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
+    // background-color: #99a9bf;
   }
-  
+
   .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
+    // background-color: #d3dce6;
   }
 </style>
 </style>
