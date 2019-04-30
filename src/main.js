@@ -3,15 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import axios from 'axios'
 import './assets/style/reset.less'
+import Vuex from 'vuex'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-import ElementUI from 'element-ui';
+import ElementUI from 'element-ui'
 import animate from 'animate.css'
+import store from './store/index'
 Vue.use(mavonEditor)
 Vue.use(ElementUI)
 Vue.use(animate)
+Vue.use(Vuex)
 Vue.config.lang = 'zh-cn'
 Vue.config.productionTip = false;
 router.beforeEach((to, from, next) => {
@@ -23,6 +25,7 @@ router.beforeEach((to, from, next) => {
 new Vue({
     el: '#app',
     router,
+    store,
     components: { App },
     template: '<App/>'
 })

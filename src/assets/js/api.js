@@ -5,6 +5,8 @@ const apiConfig = {
     //用户注册
     REGISTER: `${host}/api/user/register`,
     //列表
-    USERINFO: `${host}/api/user/info`
+    USERINFO: `${host}/api/user/info`,
+    //上传图片
+    UPLOADTMG: `${host}/api/file/upload/base64`
 };
 module.exports = apiConfig;

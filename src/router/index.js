@@ -11,42 +11,41 @@ import Photo from '@/views/Photo'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/Index',
-      name: 'Index',
-      component: Index
-    },
-    {
-      path: '/Home',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/Time',
-      name: 'Time',
-      component: Time
-    },
-    {
-      path: '/Blog',
-      name: 'Blog',
-      component: Blog,
-      children: [ ]
-    },
-    {
-      path: '/Note',
-      name: 'Note',
-      component: Note
-    },
-    {
-      path: '/Person',
-      name: 'Person',
-      component: Person,
-    },
-    {
-      path: '/Photo',
-      name: 'Photo',
-      component: Photo,
-    }
-  ]
+    routes: [{
+            path: '/',
+            name: 'Home',
+            component: Home
+        },
+        {
+            path: '/Home',
+            name: 'Home',
+            component: Home
+        },
+        {
+            path: '/Time',
+            name: 'Time',
+            component: Time
+        },
+        {
+            path: '/Blog',
+            name: 'Blog',
+            component: Blog,
+            children: []
+        },
+        {
+            path: '/Note',
+            name: 'Note',
+            component: Note
+        },
+        {
+            path: '/Person',
+            name: 'Person',
+            component: Person,
+        },
+        {
+            path: '/Photo',
+            name: 'Photo',
+            component: Photo,
+        }
+    ]
 })

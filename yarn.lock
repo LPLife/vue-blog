@@ -2,6 +2,58 @@
 # yarn lockfile v1
 
 
+"@antv/adjust@~0.1.1":
+  version "0.1.1"
+  resolved "http://npm.mmclick.com/@antv%2fadjust/-/adjust-0.1.1.tgz#e263ab0e1a1941a648842fc086cf65a7e3b75e98"
+  integrity sha1-4mOrDhoZQaZIhC/Ahs9lp+O3Xpg=
+  dependencies:
+    "@antv/util" "~1.3.1"
+
+"@antv/attr@~0.1.0":
+  version "0.1.2"
+  resolved "http://npm.mmclick.com/@antv%2fattr/-/attr-0.1.2.tgz#2eeb122fcaaf851a2d8749abc7c60519d3f77e37"
+  integrity sha1-LusSL8qvhRoth0mrx8YFGdP3fjc=
+  dependencies:
+    "@antv/util" "~1.3.1"
+
+"@antv/f2@^3.1.4-beta.2":
+  version "3.3.9"
+  resolved "http://npm.mmclick.com/@antv%2ff2/-/f2-3.3.9.tgz#3793da1925aba25cf3e39d7084b69290330c1107"
+  integrity sha1-N5PaGSWrolzz451whLaSkDMMEQc=
+  dependencies:
+    "@antv/adjust" "~0.1.1"
+    "@antv/attr" "~0.1.0"
+    "@antv/scale" "~0.1.2"
+    "@antv/util" "~1.2.5"
+    hammerjs "^2.0.8"
+
+"@antv/gl-matrix@^2.7.1":
+  version "2.7.1"
+  resolved "http://npm.mmclick.com/@antv%2fgl-matrix/-/gl-matrix-2.7.1.tgz#acb8e37f7ab3df01345aba4372d7942be42eba14"
+  integrity sha1-rLjjf3qz3wE0WrpDcteUK+QuuhQ=
+
+"@antv/scale@~0.1.2":
+  version "0.1.2"
+  resolved "http://npm.mmclick.com/@antv%2fscale/-/scale-0.1.2.tgz#bd9cb33033d8944b52c3e0e4accfd60541c3c147"
+  integrity sha1-vZyzMDPYlEtSw+DkrM/WBUHDwUc=
+  dependencies:
+    "@antv/util" "~1.3.1"
+    fecha "~2.3.3"
+
+"@antv/util@~1.2.5":
+  version "1.2.5"
+  resolved "http://npm.mmclick.com/@antv%2futil/-/util-1.2.5.tgz#8896c5055ec29e4a344b5daa97bf82905f7d40cd"
+  integrity sha1-iJbFBV7Cnko0S12ql7+CkF99QM0=
+  dependencies:
+    "@antv/gl-matrix" "^2.7.1"
+
+"@antv/util@~1.3.1":
+  version "1.3.1"
+  resolved "http://npm.mmclick.com/@antv%2futil/-/util-1.3.1.tgz#30a34b201ff9126ec0d58c72c8166a9c3e644ccd"
+  integrity sha1-MKNLIB/5Em7A1YxyyBZqnD5kTM0=
+  dependencies:
+    "@antv/gl-matrix" "^2.7.1"
+
 "@babel/code-frame@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0.tgz#06e2ab19bdb535385559aabb5ba59729482800f8"
@@ -876,10 +928,20 @@ arr-union@^3.1.0:
   resolved "http://registry.npm.taobao.org/arr-union/download/arr-union-3.1.0.tgz#e39b09aea9def866a8f206e288af63919bae39c4"
   integrity sha1-45sJrqne+Gao8gbiiK9jkZuuOcQ=
 
+array-filter@^1.0.0:
+  version "1.0.0"
+  resolved "http://npm.mmclick.com/array-filter/-/array-filter-1.0.0.tgz#baf79e62e6ef4c2a4c0b831232daffec251f9d83"
+  integrity sha1-uveeYubvTCpMC4MSMtr/7CUfnYM=
+
 array-find-index@^1.0.1:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/array-find-index/download/array-find-index-1.0.2.tgz#df010aa1287e164bbda6f9723b0a96a1ec4187a1"
   integrity sha1-3wEKoSh+Fku9pvlyOwqWoexBh6E=
+
+array-find@^1.0.0:
+  version "1.0.0"
+  resolved "http://npm.mmclick.com/array-find/-/array-find-1.0.0.tgz#6c8e286d11ed768327f8e62ecee87353ca3e78b8"
+  integrity sha1-bI4obRHtdoMn+OYuzuhzU8o+eLg=
 
 array-flatten@1.1.1:
   version "1.1.1"
@@ -898,6 +960,16 @@ array-includes@^3.0.3:
   dependencies:
     define-properties "^1.1.2"
     es-abstract "^1.7.0"
+
+array-map@^0.0.0:
+  version "0.0.0"
+  resolved "http://npm.mmclick.com/array-map/-/array-map-0.0.0.tgz#88a2bab73d1cf7bcd5c1b118a003f66f665fa662"
+  integrity sha1-iKK6tz0c97zVwbEYoAP2b2ZfpmI=
+
+array-shuffle@^1.0.1:
+  version "1.0.1"
+  resolved "http://npm.mmclick.com/array-shuffle/-/array-shuffle-1.0.1.tgz#7ea4882a356b4bca5f545e0b6e52eaf6d971557a"
+  integrity sha1-fqSIKjVrS8pfVF4LblLq9tlxVXo=
 
 array-union@^1.0.1:
   version "1.0.2"
@@ -1034,6 +1106,11 @@ autoprefixer@^9.5.0:
     postcss "^7.0.14"
     postcss-value-parser "^3.3.1"
 
+autosize@^3.0.20:
+  version "3.0.21"
+  resolved "http://npm.mmclick.com/autosize/-/autosize-3.0.21.tgz#f182f40d17757d978a139a4c9ca40c4c0e448603"
+  integrity sha1-8YL0DRd1fZeKE5pMnKQMTA5EhgM=
+
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "http://npm.mmclick.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
@@ -1043,6 +1120,13 @@ aws4@^1.8.0:
   version "1.8.0"
   resolved "http://npm.mmclick.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
+
+axios@^0.15.3:
+  version "0.15.3"
+  resolved "http://npm.mmclick.com/axios/-/axios-0.15.3.tgz#2c9d638b2e191a08ea1d6cc988eadd6ba5bdc053"
+  integrity sha1-LJ1jiy4ZGgjqHWzJiOrda6W9wFM=
+  dependencies:
+    follow-redirects "1.0.0"
 
 axios@^0.18.0:
   version "0.18.0"
@@ -1780,6 +1864,11 @@ bluebird@^3.1.1, bluebird@^3.4.7, bluebird@^3.5.1:
   resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
   integrity sha1-fQHG+WFsmlGrD4xUmnnf5uwz76c=
 
+blueimp-md5@^2.6.0:
+  version "2.10.0"
+  resolved "http://npm.mmclick.com/blueimp-md5/-/blueimp-md5-2.10.0.tgz#02f0843921f90dca14f5b8920a38593201d6964d"
+  integrity sha512-EkNUOi7tpV68TqjpiUz9D9NcT8um2+qtgntmMbi5UKssVX2m/2PLqotcric0RE63pB3HPN/fjf3cKHN2ufGSUQ==
+
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
   resolved "http://registry.npm.taobao.org/bn.js/download/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
@@ -2479,6 +2568,11 @@ cosmiconfig@^4.0.0:
     js-yaml "^3.9.0"
     parse-json "^4.0.0"
     require-from-string "^2.0.1"
+
+countup.js@^1.8.1:
+  version "1.9.3"
+  resolved "http://npm.mmclick.com/countup.js/-/countup.js-1.9.3.tgz#ce3e50cd7160441e478f07da31895edcc0f1c9dd"
+  integrity sha1-zj5QzXFgRB5HjwfaMYle3MDxyd0=
 
 create-ecdh@^4.0.0:
   version "4.0.3"
@@ -3378,6 +3472,11 @@ fast-json-stable-stringify@^2.0.0:
   resolved "http://registry.npm.taobao.org/fast-json-stable-stringify/download/fast-json-stable-stringify-2.0.0.tgz#d5142c0caee6b1189f87d3a76111064f86c8bbf2"
   integrity sha1-1RQsDK7msRifh9OnYREGT4bIu/I=
 
+fastclick@^1.0.6:
+  version "1.0.6"
+  resolved "http://npm.mmclick.com/fastclick/-/fastclick-1.0.6.tgz#161625b27b1a5806405936bda9a2c1926d06be6a"
+  integrity sha1-FhYlsnsaWAZAWTa9qaLBkm0Gvmo=
+
 fastparse@^1.1.1:
   version "1.1.2"
   resolved "http://registry.npm.taobao.org/fastparse/download/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
@@ -3396,6 +3495,11 @@ faye-websocket@~0.11.0:
   integrity sha1-8O/hjE9W5PQK/H4Gxxn9XuYYjzg=
   dependencies:
     websocket-driver ">=0.5.1"
+
+fecha@~2.3.3:
+  version "2.3.3"
+  resolved "http://npm.mmclick.com/fecha/-/fecha-2.3.3.tgz#948e74157df1a32fd1b12c3a3c3cdcb6ec9d96cd"
+  integrity sha512-lUGBnIamTAwk4znq5BcqsDaxSmZ9nDVJaij6NvRt/Tg4R69gERA+otPKbS86ROw9nxVMw2/mp1fnaiWqbs6Sdg==
 
 file-loader@^1.1.4:
   version "1.1.11"
@@ -3485,6 +3589,13 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
+
+follow-redirects@1.0.0:
+  version "1.0.0"
+  resolved "http://npm.mmclick.com/follow-redirects/-/follow-redirects-1.0.0.tgz#8e34298cbd2e176f254effec75a1c78cc849fd37"
+  integrity sha1-jjQpjL0uF28lTv/sdaHHjMhJ/Tc=
+  dependencies:
+    debug "^2.2.0"
 
 follow-redirects@^1.0.0, follow-redirects@^1.3.0:
   version "1.7.0"
@@ -3735,6 +3846,11 @@ gzip-size@^4.1.0:
   dependencies:
     duplexer "^0.1.1"
     pify "^3.0.0"
+
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "http://npm.mmclick.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
 
 handle-thing@^1.2.5:
   version "1.2.5"
@@ -4713,6 +4829,11 @@ lodash.camelcase@^4.3.0:
   resolved "http://registry.npm.taobao.org/lodash.camelcase/download/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "http://npm.mmclick.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz#8489b1cb0d29ff88195cceca448ff6d6cc295c36"
@@ -4722,6 +4843,11 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "http://registry.npm.taobao.org/lodash.memoize/download/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "http://npm.mmclick.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -6197,6 +6323,11 @@ q@^1.1.2:
   resolved "http://registry.npm.taobao.org/q/download/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qr.js@0.0.0:
+  version "0.0.0"
+  resolved "http://npm.mmclick.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
+  integrity sha1-ys6GOG9ZoNuAUPqQ2baw6IoeNk8=
+
 qs@6.5.2, qs@~6.5.2:
   version "6.5.2"
   resolved "http://registry.npm.taobao.org/qs/download/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
@@ -6834,6 +6965,11 @@ sha.js@^2.4.0, sha.js@^2.4.8:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+shake.js@^1.2.2:
+  version "1.2.2"
+  resolved "http://npm.mmclick.com/shake.js/-/shake.js-1.2.2.tgz#b2ac560a82abe68d78a029623a7088e1b30bacff"
+  integrity sha1-sqxWCoKr5o14oCliOnCI4bMLrP8=
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -7643,6 +7779,16 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
+validator@^9.3.0:
+  version "9.4.1"
+  resolved "http://npm.mmclick.com/validator/-/validator-9.4.1.tgz#abf466d398b561cd243050112c6ff1de6cc12663"
+  integrity sha512-YV5KjzvRmSyJ1ee/Dm5UED0G+1L4GZnLN3w6/T+zZm8scVua4sOhYKWTUrKa0H/tMiJyO9QLHMPN+9mB/aMunA==
+
+vanilla-masker@^1.2.0:
+  version "1.2.0"
+  resolved "http://npm.mmclick.com/vanilla-masker/-/vanilla-masker-1.2.0.tgz#c2830e9d994a5fecd2261506477c2707fe589756"
+  integrity sha1-woMOnZlKX+zSJhUGR3wnB/5Yl1Y=
+
 vary@~1.1.2:
   version "1.1.2"
   resolved "http://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
@@ -7752,6 +7898,48 @@ vue@^2.6.6:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
+
+vuex@^3.1.0:
+  version "3.1.0"
+  resolved "http://npm.mmclick.com/vuex/-/vuex-3.1.0.tgz#634b81515cf0cfe976bd1ffe9601755e51f843b9"
+  integrity sha512-mdHeHT/7u4BncpUZMlxNaIdcN/HIt1GsGG5LKByArvYG/v6DvHcOxvDCts+7SRdCoIRGllK8IMZvQtQXLppDYg==
+
+vux-blazy@^1.6.4:
+  version "1.6.4"
+  resolved "http://npm.mmclick.com/vux-blazy/-/vux-blazy-1.6.4.tgz#e33073d902e0a3844ef1a463cce3ca2e0aab47bf"
+  integrity sha1-4zBz2QLgo4RO8aRjzOPKLgqrR78=
+
+vux-xscroll@^3.1.10:
+  version "3.1.12"
+  resolved "http://npm.mmclick.com/vux-xscroll/-/vux-xscroll-3.1.12.tgz#e352e7f9dc5f9fee9253db331c967dd56b3bc950"
+  integrity sha1-41Ln+dxfn+6SU9szHJZ91Ws7yVA=
+
+vux@^2.9.4:
+  version "2.9.4"
+  resolved "http://npm.mmclick.com/vux/-/vux-2.9.4.tgz#3964df4f0ac54b3fbf6cc9beb072e44dce00afaa"
+  integrity sha1-OWTfTwrFSz+/bMm+sHLkTc4Ar6o=
+  dependencies:
+    "@antv/f2" "^3.1.4-beta.2"
+    array-filter "^1.0.0"
+    array-find "^1.0.0"
+    array-map "^0.0.0"
+    array-shuffle "^1.0.1"
+    autosize "^3.0.20"
+    axios "^0.15.3"
+    big.js "^3.1.3"
+    blueimp-md5 "^2.6.0"
+    countup.js "^1.8.1"
+    fastclick "^1.0.6"
+    lodash.debounce "^4.0.8"
+    lodash.throttle "^4.1.1"
+    object-assign "^4.1.0"
+    qr.js "0.0.0"
+    shake.js "^1.2.2"
+    validator "^9.3.0"
+    vanilla-masker "^1.2.0"
+    vux-blazy "^1.6.4"
+    vux-xscroll "^3.1.10"
+    x-photoswipe "^4.1.3-rc.1"
 
 watchpack@^1.4.0:
   version "1.6.0"
@@ -7953,6 +8141,11 @@ ws@^4.0.0:
   dependencies:
     async-limiter "~1.0.0"
     safe-buffer "~5.1.0"
+
+x-photoswipe@^4.1.3-rc.1:
+  version "4.1.3-rc.1"
+  resolved "http://npm.mmclick.com/x-photoswipe/-/x-photoswipe-4.1.3-rc.1.tgz#e761901752dd3dd1f718e538514b609b5df5f7db"
+  integrity sha1-52GQF1LdPdH3GOU4UUtgm13199s=
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"

@@ -1,36 +1,49 @@
 <template>
   <div>
     <div class="upload">
-      <el-upload class="upload-demo" drag action="https://jsonplaceholder.typicode.com/posts/" :http-request="uploadImg"
-        accept="image/jpeg, image/gif, image/png" :before-upload="onBeforeUpload" multiple>
+      <el-upload class="upload-demo" drag action="http://localhost:8080/api/file/upload/base64" :http-request="uploadImg"
+        accept="image/jpeg, image/gif, image/png" :before-upload="onBeforeUpload" :show-file-list=true
+        :on-error="uploadImgError"  :on-success="handleAvatarSuccess"  multiple>
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">
           将文件拖到此处，或
           <em>点击上传</em>
         </div>
-        <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+        <div class="el-upload__tip" slot="tip">只能上传jpg/png/jpeg/gif文件，且不超过500kb</div>
       </el-upload>
     </div>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
+  import apiConfig from '../../assets/js/api'
   export default {
     data() {
-      return {};
+      return {
+        tip: '',
+        imageUrl:''
+      };
     },
     methods: {
+      handleAvatarSuccess(res, file) {
+         this.imageUrl = res.data + '?' + Math.random();
+         console.log(imageUrl);
+      },
+      uploadImgError() {
+        console.log('34');
+      },
+      // 文件上传之前的钩子，参数为上传的文件，若返回false或者返回Promise且reject，则停止上传
       onBeforeUpload(file) {
         let flat = true;
-        let reg = /\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/;
+        let reg = /image\/(gif|jpg|jpeg|png|GIF|JPG|PNG)$/;
         const isIMAGE = file.type === "image/jpeg" || "image/gif" || "image/png";
         const isLt1M = file.size / 1024 / 1024 < 1;
-          console.log("上传文件只能s是图片格式!");
-          console.log(reg.test(file.type));
-
-        if (!isIMAGE) {
-          console.log("上传文件只能是图片格式!");
-          flat = false;
+        console.log( '33');
+        if (!reg.test(file.type)) {
+            console.log('请上传格式为image/png, image/gif, image/jpg, image/jpeg的图片');
+            flat = false;
+            return;
         }
         if (!isLt1M) {
           console.log("上传文件大小不能超过 1MB!");
@@ -40,7 +53,20 @@
       },
       // 上传图片
       uploadImg(options) {
-        console.log(options);
+        let file = options.file
+        let filename = file.name;
+        axios({
+          method: 'post',
+          url: apiConfig.UPLOADTMG,
+          data: {
+            url:'cd',
+            user_id:'s'
+          }
+        }).then(res => {
+          res = res.data;
+        }).catch(err => {
+
+        });
       }
     }
   };

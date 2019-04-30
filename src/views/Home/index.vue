@@ -26,12 +26,10 @@
           part02,
           part03,
           part05,
-
    ]
         }
     },
     mounted() {
-
     },
     methods: {
     }

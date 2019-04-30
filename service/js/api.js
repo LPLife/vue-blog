@@ -5,9 +5,9 @@ var DatabaseOperation = require('./connection');
 
 //引用bodyParser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 //设置跨域请求
-app.all('*', function (req, res, next) {
+app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
@@ -17,30 +17,30 @@ app.all('*', function (req, res, next) {
 });
 // 配置服务端口
 //用户登录验证
-app.post('/api/user/login', function(req, res) {    
+app.post('/api/user/login', function(req, res) {
     DatabaseOperation.select('user', {
         "username": req.body.username,
         "password": req.body.password
     }, function(result) {
-        if(result.length == 0) {
+        if (result.length == 0) {
             result = {
-                code:'1000'
+                code: '1000'
             }
         }
         res.json(result)
     });
 });
 //用户注册
-app.get('/api/user/register', function(req, res) { 
+app.get('/api/user/register', function(req, res) {
     DatabaseOperation.select('user', {
         "username": req.query.username,
     }, function(result) {
-        if(result.length > 0) {
+        if (result.length > 0) {
             result = {
-                code:'1001'
+                code: '1001'
             }
             res.json(result);
-        }else{
+        } else {
             DatabaseOperation.insert('user', [{
                 "username": req.query.username,
                 "password": req.query.password
@@ -49,8 +49,15 @@ app.get('/api/user/register', function(req, res) {
             });
         }
     });
-
-
+});
+//图片上传
+app.post('/api/file/upload/base64', function(req, res) {
+    DatabaseOperation.insert('picture', [{
+        "url": req.body.url,
+        "user_id": req.body.user_id
+    }], function(result) {
+        res.json(result)
+    });
 });
 const port = 8080;
 app.listen(port, () => {

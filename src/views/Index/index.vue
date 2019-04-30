@@ -30,6 +30,9 @@
         <li class="home" @click="close()"><img src="../../assets/icon07.png" class="i-img">
           登录
         </li>
+        <li class="home" @click="withdraw()" if="user_id"><img src="../../assets/icon07.png" class="i-img">
+          注销
+        </li>
       </ul>
     </div>
     <Dialog v-if="showDialog">
@@ -85,6 +88,7 @@
         flat: false,
         registerflat: true,
         tip: '',
+        user_id:'',
         pages: [{
             title: '',
             style: {
@@ -109,7 +113,18 @@
     components: {
       Dialog
     },
+    mounted(){
+         if(this.$store.getters.SET_USER_ID !== ""){
+         this.user_id = this.$store.getters.SET_USER_ID;
+         }
+    },
     methods: {
+      withdraw() {
+              let user = {
+                        id:''
+                      }
+              this.$store.commit('SET_USER_ID',user);
+      },
       close() {
         if (!this.showDialog) {
           this.showLoginDialog = true;
@@ -152,6 +167,13 @@
                 this.showtipDialog = false;
                 this.showDialog = false;
                 this.tip = "";
+                console.log(res);
+              let user = {
+                        id:res.data[0]._id
+                      }
+              this.$store.commit('SET_USER_ID',user);
+              console.log(this.$store.getters.SET_USER_ID);
+
               }
             }
 
