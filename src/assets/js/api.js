@@ -7,6 +7,8 @@ const apiConfig = {
     //列表
     USERINFO: `${host}/api/user/info`,
     //上传图片
-    UPLOADTMG: `${host}/api/file/upload/base64`
+    UPLOADTMG: `${host}/api/file/upload/base64`,
+    //获取图片
+    USER_IMG_LIST:`${host}/api/user/images`
 };
 module.exports = apiConfig;

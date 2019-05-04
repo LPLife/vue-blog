@@ -1,6 +1,6 @@
 const user = {
     state: {
-        user_id: ''
+        user_id: '',
     },
 
     mutations: {

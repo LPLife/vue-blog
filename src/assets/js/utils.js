@@ -4,6 +4,7 @@ export function uploadImgToBase64 (file) {
      reader.readAsDataURL(file)
      reader.onload = function () { // 图片转base64完成后返回reader对象
       resolve(reader)
+      console.log(reader);
      }
      reader.onerror = reject
     })

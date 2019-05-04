@@ -3,7 +3,7 @@
     <div class="upload">
       <el-upload class="upload-demo" drag action="http://localhost:8080/api/file/upload/base64" :http-request="uploadImg"
         accept="image/jpeg, image/gif, image/png" :before-upload="onBeforeUpload" :show-file-list=true
-        :on-error="uploadImgError"  :on-success="handleAvatarSuccess"  multiple>
+        :on-error="uploadImgError"    multiple>
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">
           将文件拖到此处，或
@@ -12,24 +12,28 @@
         <div class="el-upload__tip" slot="tip">只能上传jpg/png/jpeg/gif文件，且不超过500kb</div>
       </el-upload>
     </div>
+    <div class="wrapper" ref="wrapper">
+        <ul class="content">
+            <li v-for="(item, index) in imageList" :key="index"><img :src="item.url" alt="" ></li>
+        </ul>
+    </div>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
   import apiConfig from '../../assets/js/api'
+  import {uploadImgToBase64} from '../../assets/js/utils'
+  import BScroll from 'better-scroll'
   export default {
     data() {
       return {
         tip: '',
-        imageUrl:''
+        imageUrl:'',
+        imageList:[]
       };
     },
     methods: {
-      handleAvatarSuccess(res, file) {
-         this.imageUrl = res.data + '?' + Math.random();
-         console.log(imageUrl);
-      },
       uploadImgError() {
         console.log('34');
       },
@@ -39,11 +43,9 @@
         let reg = /image\/(gif|jpg|jpeg|png|GIF|JPG|PNG)$/;
         const isIMAGE = file.type === "image/jpeg" || "image/gif" || "image/png";
         const isLt1M = file.size / 1024 / 1024 < 1;
-        console.log( '33');
         if (!reg.test(file.type)) {
             console.log('请上传格式为image/png, image/gif, image/jpg, image/jpeg的图片');
             flat = false;
-            return;
         }
         if (!isLt1M) {
           console.log("上传文件大小不能超过 1MB!");
@@ -55,19 +57,67 @@
       uploadImg(options) {
         let file = options.file
         let filename = file.name;
+        console.log(file)
+       uploadImgToBase64(options.file).then(res =>{
         axios({
           method: 'post',
           url: apiConfig.UPLOADTMG,
           data: {
-            url:'cd',
-            user_id:'s'
+            url:res.result,
+            user_id:localStorage.getItem('user_id')
           }
         }).then(res => {
           res = res.data;
+          this.imgeList();
+          console.log(res);
+        }).catch(err => {
+         console.log('error')
+        });
+       });
+       
+      },
+      //压缩图片
+      yasuo(){
+
+      },
+      //获取图片列表
+      imgeList(){
+        axios({
+          method: 'get',
+          url: apiConfig.USER_IMG_LIST,
+          params: {
+            user_id:localStorage.getItem('user_id')
+          }
+        }).then(res => {
+          res = res.data;
+          this.imageList = res;
+             this.$nextTick(() => {
+            if (!this.scroll) {
+              this.scroll = new BScroll(this.$refs.wrapper, {})
+              this.scroll.on('touchend', (pos) => {
+                // 下拉动作
+                if (pos.y > 50) {
+                  this.loadData()
+                }
+              })
+            } else {
+              this.scroll.refresh()
+            }
+        })
+          console.log(res);
         }).catch(err => {
 
         });
       }
+    },
+    mounted(){
+        this.imgeList();
+        //   let options = {
+        // startY: 1,
+        // scrollY:1
+        //   }
+        // let wrapper = document.querySelector('.wrapper')
+        // let scroll = new BScroll(wrapper,options)
     }
   };
 
@@ -76,5 +126,19 @@
   .upload {
     margin: 16px 0;
   }
+  .wrapper {
+      ul {
+          flex-wrap: wrap;
+          height: auto;
+          li {
+              width: 20%;
+              margin: 32px;
+          }
+      }
+      img {
+      width: 200px;
+      height: 200px;
+      }
 
+  }
 </style>

@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: '1mb'}));
+app.use(bodyParser.urlencoded({limit: '1mb', extended: true}));
 var DatabaseOperation = require('./connection');
 
 //引用bodyParser
@@ -56,6 +58,19 @@ app.post('/api/file/upload/base64', function(req, res) {
         "url": req.body.url,
         "user_id": req.body.user_id
     }], function(result) {
+        res.json(result)
+    });
+});
+//获取图片列表
+app.get('/api/user/images', function(req, res) {
+    DatabaseOperation.select('picture', {
+        "user_id": req.query.user_id,
+    }, function(result) {
+        if (result.length == 0) {
+            result = {
+                code: '1000'
+            }
+        }
         res.json(result)
     });
 });
