@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{ minHeight: windowHeight +'px'}">
     <Index></Index>
   </div>
 </template>
@@ -8,10 +8,18 @@
   import Index from './views/Index/index'
   export default {
     name: 'App',
+    data() {
+      return {
+        windowHeight:''
+      }
+    },
     methods: {},
     components: {
       Index
-    }
+    },
+    mounted() {
+       this.windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    },
   }
 
 </script>
