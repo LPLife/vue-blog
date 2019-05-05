@@ -74,6 +74,16 @@ app.get('/api/user/images', function(req, res) {
         res.json(result)
     });
 });
+//删除图片
+app.post('/api/user/images/delete', function(req, res) {
+    DatabaseOperation.removeall('picture', {
+        url: req.body.url,
+        }, function(result) {
+            console.log(result);
+            res.json(result)
+
+        })
+});
 const port = 8080;
 app.listen(port, () => {
     console.log('Express server listening on port ' + port);

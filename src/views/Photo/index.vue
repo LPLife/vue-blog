@@ -14,7 +14,12 @@
     </div>
     <div class="wrapper" ref="wrapper">
         <ul class="content">
-            <li v-for="(item, index) in imageList" :key="index"><img :src="item.url" alt="" ></li>
+            <li v-for="(item, index) in imageList" :key="index">
+                <div class="delete" v-if="indexImag == index" >
+                    <img src="../../assets/delete.png" @click="deleteImg(item)">
+                </div>
+                <img :src="item.url" alt="" v-on:mouseenter="handEnter(index)">
+          </li>
         </ul>
     </div>
   </div>
@@ -30,10 +35,32 @@
       return {
         tip: '',
         imageUrl:'',
+        indexImag:-1,
         imageList:[]
       };
     },
     methods: {
+     //删除图片
+     deleteImg(item){
+         console.log(item);
+        axios({
+          method: 'post',
+          url: apiConfig.USER_DELETE_IMG,
+          data: {
+            url:item.url
+          }
+        }).then(res => {
+          res = res.data;
+          this.imgeList();
+          console.log('dd');
+          console.log(res);
+        }).catch(err => {
+         console.log('error')
+        });
+     },
+     handEnter(index) {
+        this.indexImag = index;
+      },
       uploadImgError() {
         console.log('34');
       },
@@ -131,6 +158,7 @@
           flex-wrap: wrap;
           height: auto;
           li {
+              position: relative;
               width: 20%;
               margin: 32px;
           }
@@ -139,6 +167,14 @@
       width: 200px;
       height: 200px;
       }
-
+  }
+  .delete {
+      position: absolute;
+      top: 0;
+      right: 0;
+      img {
+          width: 30px;
+          height: 30px;
+      }
   }
 </style>

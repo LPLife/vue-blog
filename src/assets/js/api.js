@@ -9,6 +9,8 @@ const apiConfig = {
     //上传图片
     UPLOADTMG: `${host}/api/file/upload/base64`,
     //获取图片
-    USER_IMG_LIST:`${host}/api/user/images`
+    USER_IMG_LIST:`${host}/api/user/images`,
+    //删除图片
+    USER_DELETE_IMG:`${host}/api/user/images/delete`
 };
 module.exports = apiConfig;
