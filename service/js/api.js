@@ -56,7 +56,8 @@ app.get('/api/user/register', function(req, res) {
 app.post('/api/file/upload/base64', function(req, res) {
     DatabaseOperation.insert('picture', [{
         "url": req.body.url,
-        "user_id": req.body.user_id
+        "user_id": req.body.user_id,
+        "upload_date":req.body.upload_date
     }], function(result) {
         res.json(result)
     });

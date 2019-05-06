@@ -52,7 +52,6 @@
         }).then(res => {
           res = res.data;
           this.imgeList();
-          console.log('dd');
           console.log(res);
         }).catch(err => {
          console.log('error')
@@ -84,14 +83,19 @@
       uploadImg(options) {
         let file = options.file
         let filename = file.name;
-        console.log(file)
+        let nowDate = new Date();
+        let year = nowDate.getFullYear(),
+            month = nowDate.getMonth() < 9 ? `0${nowDate.getMonth()+1}`:`${nowDate.getMonth()+1}`,
+            day = nowDate.getDate() < 10 ? `0${nowDate.getDate()}`:`${nowDate.getDate()+1}`;
+        let date = year+'-'+month+'-'+day;
        uploadImgToBase64(options.file).then(res =>{
         axios({
           method: 'post',
           url: apiConfig.UPLOADTMG,
           data: {
             url:res.result,
-            user_id:localStorage.getItem('user_id')
+            user_id:localStorage.getItem('user_id'),
+            upload_date:date
           }
         }).then(res => {
           res = res.data;
