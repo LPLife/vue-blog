@@ -7837,6 +7837,11 @@ vue-hot-reload-api@^2.2.0:
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"
   integrity sha1-J1b0bLMlgFTF9HI96K5+hzAqHM8=
 
+vue-light-timeline@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vue-light-timeline/-/vue-light-timeline-1.0.3.tgz#0270adc8075402d4b34252774869dff226882ea3"
+  integrity sha512-L84+qFqx+1sQCIs1dvUjsuqDrENmV+gaGfC8O0pz+sUxAhJQVR5jTySFXfOTIPvG/j6rNIFlgQCXigx8jGP6pA==
+
 vue-loader@^13.3.0:
   version "13.7.3"
   resolved "http://registry.npm.taobao.org/vue-loader/download/vue-loader-13.7.3.tgz#e07440f78230a639d00ada4da7b96d0e9d62037f"

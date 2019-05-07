@@ -85,6 +85,30 @@ app.post('/api/user/images/delete', function(req, res) {
 
         })
 });
+//获取日志列表
+app.get('/api/user/log', function(req, res) {
+    DatabaseOperation.select('log', {
+        "user_id": req.query.user_id,
+    }, function(result) {
+        if (result.length == 0) {
+            result = {
+                code: '1000'
+            }
+        }
+        res.json(result)
+    });
+});
+//更新日志
+app.post('/api/user/log/USER_LOG_UPDATE', function(req, res) {
+    DatabaseOperation.insert('log', [{
+        "user_id": req.body.user_id,
+        "upload_date":req.body.upload_date,
+        "tip":req.body.tip,
+        "date":req.body.date
+    }], function(result) {
+        res.json(result)
+    });
+});
 const port = 8080;
 app.listen(port, () => {
     console.log('Express server listening on port ' + port);

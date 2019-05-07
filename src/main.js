@@ -10,6 +10,9 @@ import 'mavon-editor/dist/css/index.css'
 import ElementUI from 'element-ui'
 import animate from 'animate.css'
 import store from './store/index'
+import LightTimeline from 'vue-light-timeline';
+
+Vue.use(LightTimeline);
 Vue.use(mavonEditor)
 Vue.use(ElementUI)
 Vue.use(animate)

@@ -139,16 +139,15 @@
         }).catch(err => {
 
         });
+      },
+      updateLog(){
+        
       }
+
+
     },
     mounted(){
         this.imgeList();
-        //   let options = {
-        // startY: 1,
-        // scrollY:1
-        //   }
-        // let wrapper = document.querySelector('.wrapper')
-        // let scroll = new BScroll(wrapper,options)
     }
   };
 

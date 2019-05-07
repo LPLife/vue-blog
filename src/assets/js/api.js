@@ -11,6 +11,11 @@ const apiConfig = {
     //获取图片
     USER_IMG_LIST:`${host}/api/user/images`,
     //删除图片
-    USER_DELETE_IMG:`${host}/api/user/images/delete`
+    USER_DELETE_IMG:`${host}/api/user/images/delete`,
+    // 用户日志列表
+    USER_LOG:`${host}/api/user/log`,
+    //用户日志更新
+    USER_LOG_UPDATE:`${host}/api/user/log/USER_LOG_UPDATE`
+
 };
 module.exports = apiConfig;
