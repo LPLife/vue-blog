@@ -99,10 +99,9 @@ app.get('/api/user/log', function(req, res) {
     });
 });
 //更新日志
-app.post('/api/user/log/USER_LOG_UPDATE', function(req, res) {
+app.post('/api/user/log/update', function(req, res) {
     DatabaseOperation.insert('log', [{
         "user_id": req.body.user_id,
-        "upload_date":req.body.upload_date,
         "tip":req.body.tip,
         "date":req.body.date
     }], function(result) {

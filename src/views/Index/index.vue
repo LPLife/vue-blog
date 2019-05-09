@@ -77,6 +77,7 @@
   import slider from 'vue-concise-slider'
   import Dialog from '../Dialog/index'
   import apiConfig from '../../assets/js/api'
+  import {updateLog} from '../../assets/js/utils'
   export default {
     data() {
       return {
@@ -118,7 +119,8 @@
     },
     methods: {
       withdraw() {
-              localStorage.removeItem('user_id');
+		  	  updateLog('退出网站');
+			  localStorage.removeItem('user_id');			  
               this.isLogin = localStorage.getItem('user_id')?true:false;
       },
       close() {
@@ -130,7 +132,6 @@
         }
 
       },
-
       filterAll() {
         if (this.password.length < 5 || this.password.length > 12) {
           this.showtipDialog = true;
@@ -144,7 +145,6 @@
       },
       login() {
         if (this.filterAll()) {
-          console.log('用户信息录入成功！');
           axios({
               method: 'post',
               url: apiConfig.LOGIN,
@@ -168,7 +168,8 @@
                       }
               this.$store.commit('SET_USER_ID',user);
               localStorage.setItem("user_id",res.data[0]._id);
-              this.isLogin = localStorage.getItem('user_id')?true:false;
+			  this.isLogin = localStorage.getItem('user_id')?true:false;
+			  updateLog('登录网站');
               }
             }
 

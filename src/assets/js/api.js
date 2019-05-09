@@ -15,7 +15,7 @@ const apiConfig = {
     // 用户日志列表
     USER_LOG:`${host}/api/user/log`,
     //用户日志更新
-    USER_LOG_UPDATE:`${host}/api/user/log/USER_LOG_UPDATE`
+    USER_LOG_UPDATE:`${host}/api/user/log/update`
 
 };
 module.exports = apiConfig;
