@@ -100,10 +100,57 @@ app.get('/api/user/log', function(req, res) {
 });
 //更新日志
 app.post('/api/user/log/update', function(req, res) {
+    console.log(req.body.tip);
     DatabaseOperation.insert('log', [{
+        "tip":req.body.message,
         "user_id": req.body.user_id,
-        "tip":req.body.tip,
-        "date":req.body.date
+        "date":req.body.upload_date
+    }], function(result) {
+        res.json(result)
+    });
+});
+//获取留言列表
+app.get('/api/users/notes', function(req, res) {
+    DatabaseOperation.select('note', function(result) {
+        if (result.length == 0) {
+            result = {
+                code: '1000'
+            }
+        }
+        res.json(result)
+    });
+});
+//获取单个用户留言列表
+app.get('/api/user/note', function(req, res) {
+    DatabaseOperation.select('note', {
+        "user_id": req.query.user_id,
+    }, function(result) {
+        if (result.length == 0) {
+            result = {
+                code: '1000'
+            }
+        }
+        res.json(result)
+    });
+});
+//删除留言
+app.post('/api/user/note/delete', function(req, res) {
+    console.log(req.body.id)
+    DatabaseOperation.removeall('note', {
+        _id: req.body.id,
+        }, function(result) {
+            console.log(req.body.id)
+
+            res.json(result)
+
+        })
+});
+//添加留言
+app.post('/api/user/note/add', function(req, res) {
+    DatabaseOperation.insert('note', [{
+        "message":req.body.message,
+        "user_id": req.body.user_id,
+        "upload_date":req.body.upload_date,
     }], function(result) {
         res.json(result)
     });

@@ -15,7 +15,15 @@ const apiConfig = {
     // 用户日志列表
     USER_LOG:`${host}/api/user/log`,
     //用户日志更新
-    USER_LOG_UPDATE:`${host}/api/user/log/update`
+    USER_LOG_UPDATE:`${host}/api/user/log/update`,
+    //获取留言列表
+    USERS_NOTES:`${host}/api/users/notes`,
+    //获取单个用户留言列表  
+    USER_NOTE:`${host}/api/user/note`,
+    //删除留言
+    USER_NOTE_DELETE:`${host}/api/user/note/delete`,
+    // 添加留言
+    USER_NOTE_ADD:`${host}/api/user/note/add`
 
 };
 module.exports = apiConfig;

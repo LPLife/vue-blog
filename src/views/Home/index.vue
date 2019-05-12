@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <div class="lunbo">
+    <div class="lunbo animated bounceInDown bounce delay-1s">
       <el-carousel :interval="6000" type="card" height="300px">
         <el-carousel-item v-for="item in picList" :key="item">
           <img :src='item'/>

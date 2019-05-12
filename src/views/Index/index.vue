@@ -241,7 +241,7 @@
 
 </script>
 < !-- Add "scoped" attribute to limit CSS to this component only -->
-  <style lang="less" scope>
+  <style lang="less">
     .Index {
       display: flex;
       flex-direction: column;

@@ -22,8 +22,6 @@ export function uploadImgToBase64 (file) {
     return  date;
    }
    export function updateLog(tip) {
-console.log('sd');
-
     axios({
         method: 'post',
         url: apiConfig.USER_LOG_UPDATE,
