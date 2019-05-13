@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+  import axios from 'axios'
   import apiConfig from '../../assets/js/api'
   import {time,updateLog} from '../../assets/js/utils'
 export default {

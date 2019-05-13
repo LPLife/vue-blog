@@ -135,12 +135,9 @@ app.get('/api/user/note', function(req, res) {
 });
 //删除留言
 app.post('/api/user/note/delete', function(req, res) {
-    console.log(req.body.id)
     DatabaseOperation.removeall('note', {
         _id: req.body.id,
         }, function(result) {
-            console.log(req.body.id)
-
             res.json(result)
 
         })
@@ -151,6 +148,17 @@ app.post('/api/user/note/add', function(req, res) {
         "message":req.body.message,
         "user_id": req.body.user_id,
         "upload_date":req.body.upload_date,
+    }], function(result) {
+        res.json(result)
+    });
+});
+//博客文章
+app.post('/api/blog/article', function(req, res) {
+    console.log(req)
+    DatabaseOperation.insert('blogs', [{
+        "data": req.body.article,
+        "upload_date":req.body.date,
+        "user_id": req.body.user_id
     }], function(result) {
         res.json(result)
     });

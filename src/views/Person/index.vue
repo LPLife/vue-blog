@@ -1,11 +1,17 @@
 <template>
   <div class="mavonEditor">
-    <no-ssr>
-      <mavon-editor :toolbars="markdownOption" v-model="handbook"/>
-    </no-ssr>
+    <div>
+      <mavon-editor :toolbars="markdownOption" v-model="handbook" ref=md @imgAdd="$imgAdd" @imgDel="$imgDel"  @save="saveMavon" />
+    </div>
   </div>
 </template>
+
+
+
 <script>
+import axios from 'axios';
+import apiConfig from '../../assets/js/api'
+import {time,updateLog} from '../../assets/js/utils'
 export default {
   data() {
     return {
@@ -46,6 +52,44 @@ export default {
       },
       handbook: "#### how to use mavonEditor in nuxt.js"
     };
+  },
+  methods: {
+	     $imgAdd(pos, $file){
+            // 将图片上传到服务器.
+           var formdata = new FormData();
+           formdata.append('image', $file);
+        //    axios({
+        //        url: apiConfig.USER_BLOG_ARTICLE,
+        //        method: 'post',
+        //        data: formdata,
+        //        headers: { 'Content-Type': 'multipart/form-data' },
+        //    }).then((flag) => {
+        //    })
+        },
+ 
+		  $imgDel(){
+
+		  } ,
+		  saveMavon(value,render){ 
+          console.log("this is render"+render);
+		  console.log("this is value"+value);
+		    axios({
+			   method: 'post',
+               url: apiConfig.USER_BLOG_ARTICLE,
+               data: {
+				   article:render,
+				   date:time(),
+				   user_id:localStorage.getItem('user_id'),
+			   },
+            //    headers: { 'Content-Type': 'multipart/form-data' },
+           }).then(res => {
+				res = res.data;
+				console.log('dsf')
+				// updateLog('上传博客');
+        }).catch(err => {
+            console.log('error')
+        });
+        },
   }
 };
 </script>
