@@ -23,7 +23,8 @@ const apiConfig = {
     //删除留言
     USER_NOTE_DELETE:`${host}/api/user/note/delete`,
     // 添加留言
-    USER_NOTE_ADD:`${host}/api/user/note/add`
-
+    USER_NOTE_ADD:`${host}/api/user/note/add`,
+    //博客图片
+    USER_BLOG_ARTICLE:`${host}/api/blog/article`
 };
 module.exports = apiConfig;
