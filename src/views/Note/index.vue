@@ -17,7 +17,7 @@
 					dfd : {{item.message}}（{{item.upload_date}}）
 			</div>
 			<div class="delete">
-                  <a @click="deleteNote(item)">删除</a>
+                  <!-- <a @click="deleteNote(item)">删除</a> -->
                   <a>回复</a>
 			</div>
 		  </div>
@@ -54,7 +54,8 @@ export default {
           }
         }).then(res => {
           res = res.data;
-          this.msgList();
+		  this.msgList();
+		  
           updateLog('删除留言');
         }).catch(err => {
          console.log('error')
@@ -84,7 +85,8 @@ export default {
           }
         }).then(res => {
 		  res = res.data;
-		  this.getNoteList();
+          this.getNoteList();
+          this.message = "";
           updateLog('留言');
         }).catch(err => {
          console.log('error')
@@ -112,7 +114,7 @@ export default {
         });
 	 },
     dealTip (message){
-      console.log(message);
+    
     }
   }
 }

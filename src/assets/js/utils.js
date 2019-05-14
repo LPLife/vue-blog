@@ -6,7 +6,6 @@ export function uploadImgToBase64 (file) {
      reader.readAsDataURL(file)
      reader.onload = function () { // 图片转base64完成后返回reader对象
       resolve(reader)
-      console.log(reader);
      }
      reader.onerror = reject
     })
@@ -22,6 +21,7 @@ export function uploadImgToBase64 (file) {
     return  date;
    }
    export function updateLog(tip) {
+     console.log(tip,time());
     axios({
         method: 'post',
         url: apiConfig.USER_LOG_UPDATE,
@@ -33,7 +33,6 @@ export function uploadImgToBase64 (file) {
       }
 
     ).then(res => {
-console.log(res);
       }
 
     ).catch(err => {

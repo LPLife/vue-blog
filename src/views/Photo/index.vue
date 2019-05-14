@@ -94,6 +94,7 @@
         }).then(res => {
           res = res.data;
           updateLog('上传图片');
+          this.imgeList();
         }).catch(err => {
          console.log('error')
         });

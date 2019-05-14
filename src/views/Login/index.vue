@@ -51,10 +51,10 @@
 
       },
       changeUsername(username) {
-           console.log(username+'0');
+        
       },
       changePassword(password) {
-           console.log(password);
+       
       }
     },
     mounted: {

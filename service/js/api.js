@@ -102,9 +102,9 @@ app.get('/api/user/log', function(req, res) {
 app.post('/api/user/log/update', function(req, res) {
     console.log(req.body.tip);
     DatabaseOperation.insert('log', [{
-        "tip":req.body.message,
+        "tip":req.body.tip,
         "user_id": req.body.user_id,
-        "date":req.body.upload_date
+        "date":req.body.date
     }], function(result) {
         res.json(result)
     });
@@ -140,7 +140,6 @@ app.post('/api/user/note/delete', function(req, res) {
         _id: req.body.id,
         }, function(result) {
             console.log(req.body.id)
-
             res.json(result)
 
         })

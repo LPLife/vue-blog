@@ -48,6 +48,7 @@ export default {
           }else{
           this.items = res.data;
           this.items.reverse();
+          console.log(this.items);
           }
         }).catch(err => {
          console.log('error')
