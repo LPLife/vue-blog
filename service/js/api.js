@@ -157,7 +157,8 @@ app.post('/api/blog/article', function(req, res) {
     DatabaseOperation.insert('blogs', [{
         "data": req.body.article,
         "upload_date":req.body.date,
-        "user_id": req.body.user_id
+        "user_id": req.body.user_id,
+        "title":req.body.title
     }], function(result) {
         res.json(result)
     });

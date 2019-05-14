@@ -1,8 +1,20 @@
 <template>
   <div class="mavonEditor">
+    <div class="title">
+	 <div class="title-name">标题</div>
+	  <el-input placeholder="博客标题" v-model="title" @change="changTitle"></el-input>
+    </div>
     <div>
       <mavon-editor :toolbars="markdownOption" v-model="handbook" ref=md @imgAdd="$imgAdd" @imgDel="$imgDel"  @save="saveMavon" />
     </div>
+	<el-dialog
+	title="提示"
+	:visible.sync="dialogVisible"
+	width="30%"
+	>
+	<span>{{tip}}</span>
+	</el-dialog>
+
   </div>
 </template>
 
@@ -15,6 +27,9 @@ import {time,updateLog} from '../../assets/js/utils'
 export default {
   data() {
     return {
+	  title:'',
+	  tip:'',
+	  dialogVisible: false,
       markdownOption: {
       bold: true, // 粗体
       italic: true, // 斜体
@@ -54,6 +69,9 @@ export default {
     };
   },
   methods: {
+		changTitle(title){
+          console.log(title);
+		},
 	     $imgAdd(pos, $file){
             // 将图片上传到服务器.
            var formdata = new FormData();
@@ -65,14 +83,18 @@ export default {
         //        headers: { 'Content-Type': 'multipart/form-data' },
         //    }).then((flag) => {
         //    })
-        },
- 
+		},
 		  $imgDel(){
 
 		  } ,
 		  saveMavon(value,render){ 
           console.log("this is render"+render);
 		  console.log("this is value"+value);
+		  if(this.title === " " || this.title.length==0){
+				this.tip = "博客标题不能为空！";
+				this.dialogVisible =true;
+				return 0;
+		  }
 		    axios({
 			   method: 'post',
                url: apiConfig.USER_BLOG_ARTICLE,
@@ -80,6 +102,7 @@ export default {
 				   article:render,
 				   date:time(),
 				   user_id:localStorage.getItem('user_id'),
+				   title:this.title
 			   },
             //    headers: { 'Content-Type': 'multipart/form-data' },
            }).then(res => {
@@ -94,9 +117,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .mavonEditor {
   width: 100%;
   height: 100%;
+}
+.title{
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+	margin: 8px;
+	.title-name {
+		width: 100px;
+	}
 }
 </style>
