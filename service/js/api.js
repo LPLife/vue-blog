@@ -151,15 +151,27 @@ app.post('/api/user/note/add', function(req, res) {
         res.json(result)
     });
 });
-//博客文章
+//写入博客
 app.post('/api/blog/article', function(req, res) {
-    console.log(req)
     DatabaseOperation.insert('blogs', [{
         "data": req.body.article,
         "upload_date":req.body.date,
         "user_id": req.body.user_id,
         "title":req.body.title
     }], function(result) {
+        res.json(result)
+    });
+});
+//博客列表
+app.get('/api/blog/article/list', function(req, res) {
+    DatabaseOperation.select('blogs', {
+        "user_id": req.query.user_id,
+    }, function(result) {
+        if (result.length == 0) {
+            result = {
+                code: '1000'
+            }
+        }
         res.json(result)
     });
 });

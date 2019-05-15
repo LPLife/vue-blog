@@ -5,7 +5,7 @@
 	  <el-input placeholder="博客标题" v-model="title" @change="changTitle"></el-input>
     </div>
     <div>
-      <mavon-editor :toolbars="markdownOption" v-model="handbook" ref=md @imgAdd="$imgAdd" @imgDel="$imgDel"  @save="saveMavon" />
+      <mavon-editor :ishljs="true" :toolbars="markdownOption" v-model="handbook" ref=md @imgAdd="$imgAdd" @imgDel="$imgDel"  @save="saveMavon" />
     </div>
 	<el-dialog
 	title="提示"
@@ -104,11 +104,10 @@ export default {
 				   user_id:localStorage.getItem('user_id'),
 				   title:this.title
 			   },
-            //    headers: { 'Content-Type': 'multipart/form-data' },
            }).then(res => {
 				res = res.data;
 				console.log('dsf')
-				// updateLog('上传博客');
+				updateLog('上传博客');
         }).catch(err => {
             console.log('error')
         });

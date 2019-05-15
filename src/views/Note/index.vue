@@ -14,7 +14,7 @@
 	<div class="msg">
 		<div class="wrap" v-for="(item,index) in msgList" :key="index">
 			<div class="msg-title">
-					dfd : {{item.message}}（{{item.upload_date}}）
+				 {{item.message}}（{{item.upload_date}}）
 			</div>
 			<div class="delete">
                   <!-- <a @click="deleteNote(item)">删除</a> -->
@@ -44,7 +44,6 @@ export default {
   methods:{
    
      deleteNote(item){
-		 console.log(item)
         axios({
           method: 'post',
           url: apiConfig.USER_NOTE_DELETE,

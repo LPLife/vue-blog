@@ -24,7 +24,9 @@ const apiConfig = {
     USER_NOTE_DELETE:`${host}/api/user/note/delete`,
     // 添加留言
     USER_NOTE_ADD:`${host}/api/user/note/add`,
-    //博客图片
-    USER_BLOG_ARTICLE:`${host}/api/blog/article`
+    //上传博客
+    USER_BLOG_ARTICLE:`${host}/api/blog/article`,
+    //博客列表
+    USER_BLOG_LIST:`${host}/api/blog/article/list`
 };
 module.exports = apiConfig;

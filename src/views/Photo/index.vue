@@ -115,19 +115,6 @@
         }).then(res => {
           res = res.data;
           this.imageList = res;
-             this.$nextTick(() => {
-            if (!this.scroll) {
-              this.scroll = new BScroll(this.$refs.wrapper, {})
-              this.scroll.on('touchend', (pos) => {
-                // 下拉动作
-                if (pos.y > 50) {
-                  this.loadData()
-                }
-              })
-            } else {
-              this.scroll.refresh()
-            }
-        })
         }).catch(err => {
 
         });
