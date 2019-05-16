@@ -6,10 +6,16 @@
          <p>向往诗和远方！</p>
       </div>
    <section>
+       <div class="new-blog">最新博文</div>
        <div class="article" v-for="(item, index) in blogList" :key="index">
             <div class="article-title">{{item.title}}</div>
-            <div class="des" v-html="item.data"></div>
-            <div class="date">{{item.upload_date}}</div>  
+            <div class="article_content">
+              <img class="article_p" src="../../assets/part_06.jpg">
+              <div class="description">             
+                <div class="des" v-html="item.data"></div>
+                <div class="date">{{item.upload_date}}</div> 
+              </div> 
+            </div> 
         </div>
     </section> 
   </div>
@@ -55,6 +61,51 @@
 
 </script>
 <style lang="less" scoped>
+section {
+  background-color: #fff;
+  padding: 32px 20px;
+  .new-blog {
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+    color: #484848;
+    text-align: left;
+    padding: 16px 8px 0;
+    &:after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 2px;
+    background: #000;
+    display: block;
+}
+  }
+  .article {
+    padding: 32px 20px;
+    border-bottom: 2px dashed #eee;
+    .article-title {
+      text-align: left;
+      margin: 16px 0;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .article_p {
+    }
+  }
+  .article_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    .article_p {
+      
+    }
+    .description {
+      flex: 1;
+    }
+
+
+  }
+}
 .whitebg {
     background: #fff;
     border-radius: 3px;
@@ -73,5 +124,15 @@
 }
 .lanmu p {
     color: #666;
+}
+.description {
+  .des {
+    height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .date {
+
+  }
 }
 </style>
