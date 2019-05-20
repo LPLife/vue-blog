@@ -86,9 +86,8 @@ var DatabaseOperation = {
         const client = new MongoClient(dataconfig.dataurl);
         client.connect(function(err) {
             assert.equal(null, err);
-            console.log("数据库连接成功");
             const db = client.db(dataconfig.dataname);
-            db.collection(dataname).deleteOne(removelanguage, function(err, result) {
+            db.collection(dataname).findAndRemove(removelanguage, function(err, result) {
                 assert.equal(err, null);
                 dealdata(result);
                 client.close();
@@ -124,10 +123,10 @@ var DatabaseOperation = {
 //     }, function(result) {
 //         console.log(result);
 //     })
-// DatabaseOperation.removeall('address', {
-//     "insert": "hello"
-// }, function(result) {
-//     console.log(result);
-// })
+DatabaseOperation.removeall('note', {
+    "id": "5ce177b965ee630c046266af"
+}, function(result) {
+    console.log(result);
+})
 
 module.exports = DatabaseOperation;

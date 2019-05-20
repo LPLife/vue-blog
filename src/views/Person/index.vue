@@ -88,7 +88,7 @@ export default {
 
 		  } ,
 		  saveMavon(value,render){ 
-          console.log("this is render"+render);
+      console.log("this is render"+render);
 		  console.log("this is value"+value);
 		  if(this.title === " " || this.title.length==0){
 				this.tip = "博客标题不能为空！";

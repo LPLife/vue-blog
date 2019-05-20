@@ -24,7 +24,7 @@
         </li>
         <li>
         <li class="home"><img src="../../assets/icon06.png" class="i-img">
-          <router-link to="/Person">关于我</router-link>
+          <router-link to="/Person">写博客</router-link>
         </li>
         <li>
         <li class="home" @click="close()" v-if="!isLogin"><img src="../../assets/icon07.png" class="i-img">
@@ -39,9 +39,6 @@
       <div slot="login" class="login-from" v-if="showLoginDialog">
         <div class="title">
           欢迎登陆
-        </div>
-        <div slot="tip" v-if="showtipDialog" class="tip">
-          {{tip}}
         </div>
         <div class="from">
           <input type="text" v-model="username" placeholder="用户名">
@@ -78,17 +75,16 @@
   import Dialog from '../Dialog/index'
   import apiConfig from '../../assets/js/api'
   import {updateLog} from '../../assets/js/utils'
+  import { Toast } from 'mint-ui'
   export default {
     data() {
       return {
         msg: "Welcome to Your Vue.js App",
         showDialog: false,
-        showtipDialog: false,
         username: '',
         password: '',
         flat: false,
         registerflat: true,
-        tip: '',
         isLogin:'',
         pages: [{
             title: '',
@@ -119,9 +115,9 @@
     },
     methods: {
       withdraw() {
-		  	  updateLog('退出网站');
+		  	updateLog('退出网站');
 			  localStorage.removeItem('user_id');			  
-              this.isLogin = localStorage.getItem('user_id')?true:false;
+        this.isLogin = localStorage.getItem('user_id')?true:false;
       },
       close() {
         if (!this.showDialog) {
@@ -133,12 +129,27 @@
 
       },
       filterAll() {
+		if(this.username.length == 0 || this.username === ''){
+			Toast({
+				message:'昵称不能为空',
+				className:'tip'
+			});
+			return;
+		}
+		if(this.password.length == 0 || this.password === ''){
+			 Toast({
+			  message:'密码不能为空',
+			  className:'tip'			   
+			  });
+			return;
+		}
         if (this.password.length < 5 || this.password.length > 12) {
-          this.showtipDialog = true;
-          this.tip = "密码长度要大于1且小于或等于11";
+          Toast({
+			  message:'密码长度要大于1且小于或等于11',
+			  className:'tip'			   
+			  });
           return;
         } else {
-          this.tip = " ";
           this.flat = true;
         }
         return this.flat;
@@ -156,20 +167,20 @@
 
           ).then(res => {
               if (res.data.code === "1000") {
-                this.showtipDialog = true;
-                this.tip = "用户名或者密码错误，请检查您的用户名或者密码！";
+				Toast({
+				message:'用户名或者密码错误，请检查您的用户名或者密码',
+				className:'tip'			   
+				});	
                 return;
               } else {
-                this.showtipDialog = false;
                 this.showDialog = false;
-                this.tip = "";
               let user = {
                         id:res.data[0]._id
                       }
               this.$store.commit('SET_USER_ID',user);
               localStorage.setItem("user_id",res.data[0]._id);
-			  this.isLogin = localStorage.getItem('user_id')?true:false;
-			  updateLog('登录网站');
+				this.isLogin = localStorage.getItem('user_id')?true:false;
+				updateLog('登录网站');
               }
             }
 
@@ -180,8 +191,6 @@
           );
 
         } else {
-          this.showtipDialog = true;
-          console.log('登录失败');
           return;
         }
 
@@ -195,7 +204,6 @@
       },
       register() {
         if (this.filterAll()) {
-          console.log('用户注册成功！');
           axios({
               method: 'get',
               url: apiConfig.REGISTER,
@@ -208,16 +216,22 @@
           ).then(res => {
 
               if (res.data.code === "1000") {
-                this.showtipDialog = true;
-                this.tip = "用户名或者密码错误，请检查您的用户名或者密码！";
+				Toast({
+				message:'用户名或者密码错误，请检查您的用户名或者密码！',
+				className:'tip'			   
+				});
                 return;
               } else if(res.data.code === "1001"){
-                this.showtipDialog = true;
-                this.tip = "用户名重复!";
+				Toast({
+				message:'用户名重复！',
+				className:'tip'			   
+				});
                 return;
               } else {
-                this.showtipDialog = false;
-                this.tip = "注册成功";
+				Toast({
+				message:'注册成功',
+				className:'succTip'			   
+				});			
                 this.registerflat = true;
 
               }
@@ -230,8 +244,6 @@
           );
 
         } else {
-          this.showtipDialog = true;
-          console.log('登录失败');
           return;
         }
       }
@@ -339,8 +351,14 @@
     }
 
     .tip {
-      color: red;
-      margin: 4px 0;
+	  color: red;
+	  font-weight: bold;
+	  margin: 4px 0;
+	  background: #8da1ff;
     }
-
+    .succTip {
+	  color: blue;
+	  font-weight: bold;
+	  margin: 4px 0;
+	}
   </style>

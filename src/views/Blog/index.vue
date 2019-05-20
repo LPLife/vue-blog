@@ -127,9 +127,10 @@ section {
 }
 .description {
   .des {
-    height: 100px;
+    height: 200px;
     text-overflow: ellipsis;
     overflow: hidden;
+    line-height: 200px;
   }
   .date {
 

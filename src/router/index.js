@@ -7,6 +7,7 @@ import Person from '@/views/Person'
 import Index from '@/views/Index'
 import Time from '@/views/Time'
 import Photo from '@/views/Photo'
+import login from '@/views/login'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
             path: '/Person',
             name: 'Person',
             component: Person,
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: login,
         },
         {
             path: '/Photo',

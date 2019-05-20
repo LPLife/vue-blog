@@ -15,10 +15,12 @@
     <div class="wrapper" ref="wrapper">
         <ul class="content">
             <li v-for="(item, index) in imageList" :key="index">
+
                 <div class="delete" v-if="indexImag == index" >
                     <img src="../../assets/delete.png" @click="deleteImg(item)">
                 </div>
                 <img :src="item.url" alt="" v-on:mouseenter="handEnter(index)">
+               {{item.upload_date}}
           </li>
         </ul>
     </div>
@@ -30,6 +32,7 @@
   import apiConfig from '../../assets/js/api'
   import {uploadImgToBase64,time,updateLog} from '../../assets/js/utils'
   import BScroll from 'better-scroll'
+  import { Toast } from 'mint-ui';
   export default {
     data() {
       return {
@@ -52,6 +55,7 @@
           res = res.data;
           this.imgeList();
           updateLog('删除图片');
+          Toast('删除成功！');
         }).catch(err => {
          console.log('error')
         });
@@ -94,6 +98,7 @@
         }).then(res => {
           res = res.data;
           updateLog('上传图片');
+          Toast('上传成功！');
           this.imgeList();
         }).catch(err => {
          console.log('error')

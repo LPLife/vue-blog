@@ -135,8 +135,9 @@ app.get('/api/user/note', function(req, res) {
 });
 //删除留言
 app.post('/api/user/note/delete', function(req, res) {
+    console.log(req.body.id);
     DatabaseOperation.removeall('note', {
-        _id: req.body.id,
+        _id: require('mongodb').ObjectID(req.body._id),
         }, function(result) {
             res.json(result)
         })

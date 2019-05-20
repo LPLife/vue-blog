@@ -1,9 +1,6 @@
 <template>
   <div class="note">
     <div class="content">
-      <p v-bind:class="[message.length !==0 ? 'activeClass' : 'errorClass']">
-        {{tip}}
-      </p>
          <textarea rows="3" cols="50" src="note-tip" v-model="message" @change="dealTip(message)"> </textarea>
          <div class="btn-from">
              <div class="sure" @click="handleClick">
@@ -17,8 +14,8 @@
 				 {{item.message}}（{{item.upload_date}}）
 			</div>
 			<div class="delete">
-                  <!-- <a @click="deleteNote(item)">删除</a> -->
-                  <a>回复</a>
+            <span @click="deleteNote(item)">删除</span>
+             <span>回复</span>
 			</div>
 		  </div>
 	</div>
@@ -29,32 +26,32 @@
   import axios from 'axios'
   import apiConfig from '../../assets/js/api'
   import {time,updateLog} from '../../assets/js/utils'
+  import { Toast } from 'mint-ui';
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msgList: [],
       message:'',
-      tip:''
     }
   },
   mounted(){
 	  this.getNoteList();
   },
   methods:{
-   
+     
      deleteNote(item){
         axios({
           method: 'post',
           url: apiConfig.USER_NOTE_DELETE,
           data: {
-			id:`ObjectId("${item._id}")`,
-			message:item.message
+		    	_id:item._id,
+		    	message:item.message
           }
         }).then(res => {
           res = res.data;
-		  this.msgList();
-		  
+          this.getNoteList();
+          Toast('删除留言成功！');
           updateLog('删除留言');
         }).catch(err => {
          console.log('error')
@@ -62,18 +59,10 @@ export default {
     },
     // 留言
     handleClick() {
-        if(this.message.length == 0 || this.message ===" "){
-		  this.tip = "留言不能为空！";
-		setTimeout(() => {
-        this.tip = "";			
-		}, 1000);
+      if(this.message.length == 0 || this.message ===" "){
+      Toast('留言不能为空！');
           return;
-		}else{
-			this.tip = "留言成功！";
 		}
-		setTimeout(() => {
-        this.tip = "";			
-		}, 1000);
         axios({
           method: 'post',
           url: apiConfig.USER_NOTE_ADD,
@@ -86,6 +75,7 @@ export default {
 		  res = res.data;
           this.getNoteList();
           this.message = "";
+          Toast('留言成功！');
           updateLog('留言');
         }).catch(err => {
          console.log('error')
@@ -105,8 +95,7 @@ export default {
               this.show = true;
           }else{
           this.msgList = res.data;
-		  this.msgList.reverse();
-		  console.log(this.msgList);
+		      this.msgList.reverse();
           }
         }).catch(err => {
          console.log('error')
@@ -121,9 +110,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-  .note-tip {
-    
-  }
   .activeClass {
 	  color: blue;
   }
@@ -144,7 +130,7 @@ export default {
 	  margin: 32px;
   }
   .delete {
-	  a {
+	  span {
 	  text-decoration-line:underline;
 		  margin-right: 10px;
 	  }

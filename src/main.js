@@ -11,7 +11,9 @@ import ElementUI from 'element-ui'
 import animate from 'animate.css'
 import store from './store/index'
 import LightTimeline from 'vue-light-timeline';
-
+import { InfiniteScroll } from 'mint-ui';
+import 'mint-ui/lib/style.css'
+Vue.use(InfiniteScroll);
 Vue.use(LightTimeline);
 Vue.use(mavonEditor)
 Vue.use(ElementUI)
