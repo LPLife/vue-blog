@@ -78,7 +78,6 @@ body {
   line-height: 1;
   background: linear-gradient(to bottom, #c5d0ff, #6883ff);
   overflow: auto;
-  overflow-x: hidden;
   height: 100%;
 }
 ol,
