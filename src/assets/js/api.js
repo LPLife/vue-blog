@@ -31,6 +31,8 @@ const apiConfig = {
   // 获取全部用户博客列表
   USER_BLOG_LISTS: `${host}/api/blog/article/lists`,
   // 删除博客
-  USER_BLOG_DELETE: `${host}/api/user/blog/delete`
+  USER_BLOG_DELETE: `${host}/api/user/blog/delete`,
+  // 修改博客
+  USER_BLOG_UPDATE: `${host}/api/user/blog/update`
 };
 module.exports = apiConfig;

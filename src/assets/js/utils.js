@@ -14,14 +14,13 @@ export function time() {
   let nowDate = new Date();
   let year = nowDate.getFullYear(),
     month = nowDate.getMonth() < 9 ? `0${nowDate.getMonth()+1}` : `${nowDate.getMonth()+1}`,
-    day = nowDate.getDate() < 10 ? `0${nowDate.getDate()}` : `${nowDate.getDate()+1}`,
+    day = nowDate.getDate() < 10 ? `0${nowDate.getDate()}` : `${nowDate.getDate()}`,
     hours = nowDate.getHours() < 10 ? `0${nowDate.getHours()}` : `${nowDate.getHours()}`,
     minutes = nowDate.getMinutes() < 10 ? `0${nowDate.getMinutes()}` : `${nowDate.getMinutes()}`;
   let date = year + '-' + month + '-' + day + ' ' + hours + ":" + minutes;
   return date;
 }
 export function updateLog(tip) {
-  console.log(tip, time());
   axios({
       method: 'post',
       url: apiConfig.USER_LOG_UPDATE,

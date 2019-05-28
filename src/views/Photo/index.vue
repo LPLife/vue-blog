@@ -20,7 +20,7 @@
         <div class="el-upload__tip" slot="tip">只能上传jpg/png/jpeg/gif文件，且不超过500kb</div>
       </el-upload>
     </div>
-    <div class="wrapper" ref="wrapper" v-if="imageList.lenght > 0">
+    <div class="wrapper" ref="wrapper" v-if="imageListLength > 0">
       <ul class="content">
         <li v-for="(item, index) in imageList" :key="index">
           <div class="delete" v-if="indexImag == index">
@@ -31,7 +31,7 @@
         </li>
       </ul>
     </div>
-    <div class="wrapper" ref="wrapper" v-if="imageList.lenght == 0">暂无数据</div>
+    <div class="wrapper" ref="wrapper" v-if="imageListLength == 0">暂无数据</div>
   </div>
 </template>
 
@@ -47,10 +47,13 @@ export default {
       tip: "",
       imageUrl: "",
       indexImag: -1,
-      imageList: []
+      imageList: [],
+      imageListLength: 0
     };
   },
   methods: {
+    // 查看更多
+    readMore() {},
     //删除图片
     deleteImg(item) {
       axios({
@@ -134,6 +137,7 @@ export default {
           res = res.data;
           this.imageList = res;
           this.imageList.reverse();
+          this.imageListLength = this.imageList.length;
           Indicator.close();
         })
         .catch(err => {

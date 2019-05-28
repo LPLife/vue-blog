@@ -17,12 +17,14 @@
           </div>
         </div>
         <div class="operation">
+          <span class="more" @click="detail(item)">查看更多</span>
           <span class="date">{{item.upload_date}}</span>
           <span v-if="user_id !==''" @click="editBlog(item)">编辑</span>
           <span v-if="user_id !==''" @click="deleteBlog(item)">删除</span>
         </div>
       </div>
     </section>
+    <!-- <div></div> -->
   </div>
 </template>
 
@@ -50,12 +52,22 @@ export default {
     this.getBlogList();
   },
   methods: {
+    // 查看详情
+    detail(item) {
+      this.$router.push({
+        path: "/detail",
+        query: {
+          item: JSON.stringify(item)
+        }
+      });
+      return;
+    },
     //编辑博文
     editBlog(item) {
       this.$router.push({
         path: "/Edit",
         query: {
-          item: item
+          item: JSON.stringify(item)
         }
       });
       return;
@@ -176,15 +188,23 @@ section {
 }
 .description {
   .des {
-    height: 200px;
+    height: 210px;
     text-overflow: ellipsis;
     overflow: hidden;
-    line-height: 200px;
+    line-height: 30px;
+    padding: 4px;
   }
   .date {
   }
 }
+.detail {
+  .more {
+    padding-left: 10px;
+    text-decoration: underline;
+  }
+}
 .operation {
+  margin: 10px 0;
   float: right;
   .date {
     text-decoration: none;

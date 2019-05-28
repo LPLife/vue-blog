@@ -8,7 +8,7 @@ import Index from '@/views/Index'
 import Time from '@/views/Time'
 import Photo from '@/views/Photo'
 import login from '@/views/login'
-
+import Detail from '@/views/Detail'
 Vue.use(Router)
 
 export default new Router({
@@ -31,6 +31,12 @@ export default new Router({
       path: '/Blog',
       name: 'Blog',
       component: Blog,
+      children: []
+    },
+    {
+      path: '/Detail',
+      name: 'Detail',
+      component: Detail,
       children: []
     },
     {

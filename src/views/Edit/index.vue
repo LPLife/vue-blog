@@ -34,6 +34,7 @@ export default {
       title: "",
       tip: "",
       dialogVisible: false,
+      item: "",
       markdownOption: {
         bold: true, // 粗体
         italic: true, // 斜体
@@ -69,18 +70,28 @@ export default {
         subfield: true, // 单双栏模式
         preview: true // 预览
       },
-      handbook: "#### how to use mavonEditor in nuxt.js"
+      handbook: ""
     };
   },
+  created() {
+    let item = this.$router.history.current.query.item
+      ? this.$router.history.current.query.item
+      : "";
+    if (item) {
+      this.item = JSON.parse(item);
+      this.handbook = this.item.original;
+      console.log(this.handbook);
+      this.title = this.item.title;
+      console.log(item);
+    }
+  },
   mounted() {
-    console.log(JSON.stringify(this.$router.history.current.query.item));
+    console.log(this.handbook);
     // if (window.location.hash.indexOf("item") !== undefined) {
     // }
   },
   methods: {
-    changTitle(title) {
-      console.log(title);
-    },
+    changTitle(title) {},
     $imgAdd(pos, $file) {
       // 将图片上传到服务器.
       var formdata = new FormData();
@@ -96,23 +107,33 @@ export default {
         return 0;
       }
       MessageBox.confirm("确定要上传这篇博文吗?").then(action => {
+        let formdata = {
+          article: render,
+          date: time(),
+          user_id: localStorage.getItem("user_id"),
+          title: this.title,
+          original: value
+        };
+        let url = apiConfig.USER_BLOG_ARTICLE;
+        if (this.item) {
+          formdata._id = this.item._id;
+          url = apiConfig.USER_BLOG_UPDATE;
+        }
         axios({
           method: "post",
-          url: apiConfig.USER_BLOG_ARTICLE,
-          data: {
-            article: render,
-            date: time(),
-            user_id: localStorage.getItem("user_id"),
-            title: this.title
-          }
+          url: url,
+          data: formdata
         })
           .then(res => {
             res = res.data;
-            console.log("dsf");
             updateLog("上传博客");
             this.handbook = "";
             this.title = "";
-            Toast("上传成功");
+            if (this.item) {
+              Toast("修改成功");
+            } else {
+              Toast("上传成功");
+            }
           })
           .catch(err => {
             console.log("error");

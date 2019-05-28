@@ -107,7 +107,6 @@ app.get('/api/user/log', function (req, res) {
 });
 //更新日志
 app.post('/api/user/log/update', function (req, res) {
-  console.log(req.body.tip);
   DatabaseOperation.insert('log', [{
     "tip": req.body.tip,
     "user_id": req.body.user_id,
@@ -165,7 +164,8 @@ app.post('/api/blog/article', function (req, res) {
     "data": req.body.article,
     "upload_date": req.body.date,
     "user_id": req.body.user_id,
-    "title": req.body.title
+    "title": req.body.title,
+    "original": req.body.original,
   }], function (result) {
     res.json(result)
   });
@@ -201,6 +201,22 @@ app.post('/api/user/blog/delete', function (req, res) {
   console.log(req.body.id);
   DatabaseOperation.removeall('blogs', {
     _id: require('mongodb').ObjectID(req.body._id),
+  }, function (result) {
+    res.json(result)
+  })
+});
+// 修改博客
+app.post('/api/user/blog/update', function (req, res) {
+  DatabaseOperation.update('blogs', {
+    _id: require('mongodb').ObjectID(req.body._id),
+  }, {
+    $set: {
+      "data": req.body.article,
+      "upload_date": req.body.date,
+      "user_id": req.body.user_id,
+      "title": req.body.title,
+      "original": req.body.original,
+    }
   }, function (result) {
     res.json(result)
   })
