@@ -1,4 +1,5 @@
 var express = require('express');
+var md5 = require('js-md5');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json({
@@ -27,9 +28,10 @@ app.all('*', function (req, res, next) {
 // 配置服务端口
 //用户登录验证
 app.post('/api/user/login', function (req, res) {
+  console.log(md5(req.body.password))
   DatabaseOperation.select('user', {
     "username": req.body.username,
-    "password": req.body.password
+    "password": md5(req.body.password)
   }, function (result) {
     if (result.length == 0) {
       result = {
@@ -41,6 +43,8 @@ app.post('/api/user/login', function (req, res) {
 });
 //用户注册
 app.get('/api/user/register', function (req, res) {
+  console.log(md5(req.query.password))
+
   DatabaseOperation.select('user', {
     "username": req.query.username,
   }, function (result) {
@@ -52,7 +56,7 @@ app.get('/api/user/register', function (req, res) {
     } else {
       DatabaseOperation.insert('user', [{
         "username": req.query.username,
-        "password": req.query.password
+        "password": md5(req.query.password)
       }], function (result) {
         res.json(result)
       });
@@ -130,6 +134,7 @@ app.get('/api/users/notes', function (req, res) {
 app.get('/api/user/note', function (req, res) {
   DatabaseOperation.select('note', {
     "user_id": req.query.user_id,
+    "blog_id": req.query.blog_id
   }, function (result) {
     if (result.length == 0) {
       result = {
@@ -154,6 +159,7 @@ app.post('/api/user/note/add', function (req, res) {
     "message": req.body.message,
     "user_id": req.body.user_id,
     "upload_date": req.body.upload_date,
+    "blog_id": req.body.blog_id
   }], function (result) {
     res.json(result)
   });

@@ -1,19 +1,23 @@
 <template>
   <div class="time">
-    <div class="title">{{this.items.title}}</div>
+    <div class="title">{{items.title}}</div>
     <div class="markdown-body" v-html="items.data"></div>
+    <Note :blogId="items._id"></Note>
   </div>
 </template>
 <script>
 import axios from "axios";
 import apiConfig from "../../assets/js/api";
 import { MessageBox, Toast, Indicator } from "mint-ui";
-
+import Note from "../Note/index";
 export default {
   data() {
     return {
       items: []
     };
+  },
+  components: {
+    Note
   },
   created() {
     let items = this.$router.history.current.query.item
@@ -24,7 +28,7 @@ export default {
       this.handbook = this.items.original;
       console.log(this.handbook);
       this.title = this.items.title;
-      console.log(items);
+      console.log(this.items.message);
     }
   },
   mounted() {

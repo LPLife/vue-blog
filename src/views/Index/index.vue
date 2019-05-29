@@ -127,6 +127,7 @@ import Dialog from "../Dialog/index";
 import apiConfig from "../../assets/js/api";
 import { updateLog } from "../../assets/js/utils";
 import { Toast } from "mint-ui";
+import md5 from "js-md5";
 export default {
   data() {
     return {
