@@ -52,4 +52,11 @@ export default {
     text-align: left !important;
   }
 }
+.time {
+  .title {
+    margin: 16px;
+  }
+}
+
+
 </style>

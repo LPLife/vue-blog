@@ -114,15 +114,6 @@ var DatabaseOperation = {
 //         console.log('inserts插入结果');
 //         console.log(result);
 //     })
-DatabaseOperation.update('note', {
-  "insert": "1"
-}, {
-  $set: {
-    "age": "https://www.runoob.com"
-  }
-}, function (result) {
-  console.log(result);
-})
 // DatabaseOperation.removeall('note', {
 //     "id": "5ce177b965ee630c046266af"
 // }, function(result) {

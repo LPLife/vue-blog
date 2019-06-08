@@ -170,6 +170,11 @@ export default {
   methods: {
     handleRouterClick(index) {
       this.length = index;
+      if(index == 8){
+      this.$router.push({
+        path: "/Home"
+      });
+      }
     },
     withdraw() {
       updateLog("退出网站");

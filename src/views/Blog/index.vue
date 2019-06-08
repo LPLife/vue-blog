@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="operation">
-          <span>爱心 123456</span>
+          <span class="love">❤ 123456</span>
           <span class="more" @click="detail(item)">查看更多</span>
           <span class="date">{{item.upload_date}}</span>
           <span v-if="user_id !==''" @click="editBlog(item)">编辑</span>
@@ -212,6 +212,9 @@ section {
   }
   span {
     text-decoration: underline;
+  }
+  .love {
+    text-decoration: none;
   }
 }
 </style>

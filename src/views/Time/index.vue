@@ -91,6 +91,7 @@ export default {
 .tip {
   margin: 32px 20px;
   width: 150px;
+  background: inherit;
 }
 .circle {
   width: 16px;

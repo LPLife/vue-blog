@@ -23,7 +23,7 @@
     <div class="wrapper" ref="wrapper" v-if="imageListLength > 0">
       <ul class="content">
         <li v-for="(item, index) in imageList" :key="index">
-          <div class="delete" v-if="indexImag == index">
+          <div class="delete" v-if="indexImag == index && user_id !==''">
             <img src="../../assets/delete.png" @click="deleteImg(item)">
           </div>
           <img :src="item.url" alt v-on:mouseenter="handEnter(index)">
@@ -48,7 +48,8 @@ export default {
       imageUrl: "",
       indexImag: -1,
       imageList: [],
-      imageListLength: 0
+      imageListLength: 0,
+      user_id: ""
     };
   },
   methods: {
@@ -150,6 +151,9 @@ export default {
       text: "Loading...",
       spinnerType: "fading-circle"
     });
+    if (localStorage.getItem("user_id")) {
+      this.user_id = localStorage.getItem("user_id");
+    }
     this.imgeList();
   }
 };

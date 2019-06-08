@@ -1,6 +1,6 @@
 <template>
   <div class="note">
-    <div class @click="add()">添加留言</div>
+    <div class="addMessage" @click="add()">添加留言</div>
     <div class="content" v-if="show">
       <textarea rows="3" cols="50" src="note-tip" v-model="message" @change="dealTip(message)"></textarea>
       <div class="btn-from">
