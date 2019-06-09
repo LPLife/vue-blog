@@ -35,6 +35,7 @@ export default {
       tip: "",
       dialogVisible: false,
       item: "",
+      user_id: "",
       markdownOption: {
         bold: true, // 粗体
         italic: true, // 斜体
@@ -80,15 +81,11 @@ export default {
     if (item) {
       this.item = JSON.parse(item);
       this.handbook = this.item.original;
-      console.log(this.handbook);
       this.title = this.item.title;
-      console.log(item);
     }
   },
   mounted() {
-    console.log(this.handbook);
-    // if (window.location.hash.indexOf("item") !== undefined) {
-    // }
+     this.user_id = localStorage.getItem("user_id");
   },
   methods: {
     changTitle(title) {},
@@ -99,8 +96,12 @@ export default {
     },
     $imgDel() {},
     saveMavon(value, render) {
-      console.log("this is render" + render);
-      console.log("this is value" + value);
+      console.log(this.user_id);
+      if(this.user_id=== null){
+        this.tip = "上传失败，请先登录！";
+        this.dialogVisible = true;
+        return 0;
+      }
       if (this.title === " " || this.title.length == 0) {
         this.tip = "博客标题不能为空！";
         this.dialogVisible = true;
@@ -110,10 +111,15 @@ export default {
         let formdata = {
           article: render,
           date: time(),
-          user_id: localStorage.getItem("user_id"),
           title: this.title,
           original: value
         };
+        if(this.user_id){
+          formdata.user_id = this.user_id;
+        }else {
+              Toast("上传失败，请先登录！");
+              return 0;
+        }
         let url = apiConfig.USER_BLOG_ARTICLE;
         if (this.item) {
           formdata._id = this.item._id;

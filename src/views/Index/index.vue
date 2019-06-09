@@ -2,7 +2,7 @@
   <div class="Index">
     <div class="header">
       <ul>
-        <li class="home">
+        <li class="home" @click="goPath('Home',1)">
           <img
             :src="length == 1 ? require('../../assets/icon001.png'):require('../../assets/icon01.png')"
             class="i-img"
@@ -14,8 +14,7 @@
             <router-link to="/Home">首页</router-link>
           </span>
         </li>
-        <li></li>
-        <li class="home">
+        <li class="home" @click="goPath('Blog',2)">
           <img
             :src="length == 2 ? require('../../assets/icon002.png'):require('../../assets/icon02.png')"
             class="i-img"
@@ -27,8 +26,7 @@
             <router-link to="/Blog" @click="handleRouterClick(2)">博客日记</router-link>
           </span>
         </li>
-        <li></li>
-        <li class="home">
+        <li class="home" @click="goPath('Photo',3)">
           <img
             :src="length == 3 ? require('../../assets/icon003.png'):require('../../assets/icon03.png')"
             class="i-img"
@@ -40,8 +38,7 @@
             <router-link to="/Photo">相册管理</router-link>
           </span>
         </li>
-        <li></li>
-        <li class="home">
+        <li class="home" @click="goPath('Note',4)">
           <img
             :src="length == 4 ? require('../../assets/icon004.png'):require('../../assets/icon04.png')"
             class="i-img"
@@ -53,8 +50,7 @@
             <router-link to="/Note">留言板</router-link>
           </span>
         </li>
-        <li></li>
-        <li class="home">
+        <li class="home"  @click="goPath('Time',5)" v-if="isLogin">
           <img
             :src="length == 5 ? require('../../assets/icon005.png'):require('../../assets/icon05.png')"
             class="i-img"
@@ -66,8 +62,7 @@
             <router-link to="/Time">个人日志</router-link>
           </span>
         </li>
-        <li></li>
-        <li class="home">
+        <li class="home"  @click="goPath('Edit',6)">
           <img
             :src="length == 6 ? require('../../assets/icon006.png'):require('../../assets/icon06.png')"
             class="i-img"
@@ -79,7 +74,6 @@
             <router-link to="/Edit">写博客</router-link>
           </span>
         </li>
-        <li></li>
         <li class="home" @click="close()" v-if="!isLogin">
           <img src="../../assets/icon07.png" class="i-img">
           <span
@@ -168,6 +162,12 @@ export default {
     this.isLogin = localStorage.getItem("user_id") ? true : false;
   },
   methods: {
+    goPath(path,index){
+    this.length = index;
+    this.$router.push({
+        path: `/${path}`,
+      });
+    },
     handleRouterClick(index) {
       this.length = index;
       if(index == 8){

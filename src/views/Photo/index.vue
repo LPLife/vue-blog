@@ -82,18 +82,22 @@ export default {
     },
     // 文件上传之前的钩子，参数为上传的文件，若返回false或者返回Promise且reject，则停止上传
     onBeforeUpload(file) {
+        // if(this.user_id === null || this.user_id==="") {
+        //   Toast("上传失败，请先登录！");
+        //   return;
+        // }
       let flat = true;
       let reg = /image\/(gif|jpg|jpeg|png|GIF|JPG|PNG)$/;
       const isIMAGE = file.type === "image/jpeg" || "image/gif" || "image/png";
       const isLt1M = file.size / 1024 / 1024 < 1;
       if (!reg.test(file.type)) {
-        console.log(
+        Toast(
           "请上传格式为image/png, image/gif, image/jpg, image/jpeg的图片"
         );
         flat = false;
       }
       if (!isLt1M) {
-        console.log("上传文件大小不能超过 1MB!");
+        Toast("上传文件大小不能超过 1MB!");
         flat = false;
       }
       return flat;
@@ -103,6 +107,10 @@ export default {
       let file = options.file;
       let filename = file.name;
       uploadImgToBase64(options.file).then(res => {
+        if(this.user_id === null || this.user_id==="") {
+          Toast("上传失败，请先登录！");
+          return;
+        }
         axios({
           method: "post",
           url: apiConfig.UPLOADTMG,

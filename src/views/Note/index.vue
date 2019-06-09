@@ -156,5 +156,8 @@ export default {
     margin-right: 10px;
   }
 }
+.addMessage {
+  margin:  32px;
+}
 </style>>
 
