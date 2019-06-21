@@ -129,36 +129,28 @@
         }
     },
     mounted() {
-			let t = this.getBlogList();
+			this.getBlogList();
 			this.imgeList();
     },
     methods: {
 		//博客列表
     getBlogList() {
-return new Promise(function (resolve, reject) {
       axios({
         method: "get",
         url: apiConfig.USER_BLOG_LISTS,
       })
         .then(res => {
-        //   if (res.data.code === "1000") {
-        //     this.show = true;
-        //   } else {
-        //     this.blogList = res.data;
-        //     this.blogList.reverse();
-        //   }
-		//   Indicator.close();
-			  resolve(res);
+          if (res.data.code === "1000") {
+            this.show = true;
+          } else {
+            this.blogList = res.data;
+            this.blogList.reverse();
+          }
+          Indicator.close();
         })
         .catch(err => {
-			console.log(err);
-			reject(err);
           console.log("error");
-		});
-	
- }).catch(function(err){
- console.log(err);
- });
+        });
 		},
 		    //获取图片列表
     imgeList() {
