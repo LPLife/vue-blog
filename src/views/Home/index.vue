@@ -128,40 +128,39 @@
    ]
         }
     },
-    mounted() {
-			let t = this.getBlogList();
+    async mounted() {
+			let t = await this.getBlogList();
+			console.log(this.blogList);
 			this.imgeList();
     },
     methods: {
 		//博客列表
     getBlogList() {
-return new Promise(function (resolve, reject) {
-      axios({
+return new Promise((resolve, reject) => {
+		      axios({
         method: "get",
         url: apiConfig.USER_BLOG_LISTS,
       })
         .then(res => {
-        //   if (res.data.code === "1000") {
-        //     this.show = true;
-        //   } else {
-        //     this.blogList = res.data;
-        //     this.blogList.reverse();
-        //   }
-		//   Indicator.close();
-			  resolve(res);
+          if (res.data.code === "1000") {
+            this.show = true;
+          } else {
+            this.blogList = res.data;
+            this.blogList.reverse();
+          }
+		  Indicator.close();
+		  resolve(res.data);
         })
         .catch(err => {
 			console.log(err);
 			reject(err);
           console.log("error");
 		});
-	
- }).catch(function(err){
- console.log(err);
- });
+    });
 		},
 		    //获取图片列表
     imgeList() {
+			console.log(this.blogList);
       axios({
         method: "get",
         url: apiConfig.USER_IMG_LIST,
