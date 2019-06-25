@@ -9,6 +9,7 @@ import Time from '@/views/Time'
 import Photo from '@/views/Photo'
 import login from '@/views/login'
 import Detail from '@/views/Detail'
+import View_404 from '@/views/404'
 Vue.use(Router)
 
 export default new Router({
@@ -58,6 +59,11 @@ export default new Router({
       path: '/Photo',
       name: 'Photo',
       component: Photo,
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: View_404,
     }
   ]
 })
