@@ -151,6 +151,7 @@ export default {
     }
   },
   mounted() {
+    window.scrollTo(0, 0);
     Indicator.open({
       text: "Loading...",
       spinnerType: "fading-circle"

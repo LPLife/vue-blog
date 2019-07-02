@@ -35,6 +35,16 @@
 			</div>
 		</div>
 	</div>
+	   <div v-if="popupVisible">
+			<!-- <mt-popup
+				v-model="popupVisible"
+				popup-transition="popup-fade">
+				<div class="popup-block">
+						返回！！！
+				</div>
+			</mt-popup> -->
+			fdgdf
+	   </div>
   </div>
 </template>
 
@@ -54,24 +64,16 @@
   export default {
     data() {
       return {
-				blogList: "",
-       imageList: [],
+		blogList: "",
+	   imageList: [],
+	   popupVisible: false,
+	    returnNum: 0,
         picList:[
           part01,
           part02,
           part03,
           part05,
 	 ],
-	 // 查看详情
-    detail(item) {
-      this.$router.push({
-        path: "/detail",
-        query: {
-          item: JSON.stringify(item)
-        }
-      });
-      return;
-    },
    recommendList:[
 	   {
 	   img:part1,
@@ -132,8 +134,28 @@
 			let t = await this.getBlogList();
 			console.log(this.blogList);
 			this.imgeList();
+	},
+	beforeRouteLeave (to, from, next) {
+        if (!this.returnNum) {
+			this.returnNum = 1
+            this.popupVisible = true
+            next(false)
+        } else {
+            this.$router.go(-1) 
+            next(false)
+        }
     },
     methods: {
+			 // 查看详情
+    detail(item) {
+      this.$router.push({
+        path: "/detail",
+        query: {
+          item: JSON.stringify(item)
+        }
+      });
+      return;
+    },
 		//博客列表
     getBlogList() {
 return new Promise((resolve, reject) => {
@@ -178,7 +200,7 @@ return new Promise((resolve, reject) => {
         .catch(err => {
           Indicator.close();
         });
-    }
+	},
     }
   }
 
