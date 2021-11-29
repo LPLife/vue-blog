@@ -19,7 +19,7 @@
     "highlight": "^0.2.4",
     "html2canvas": "^1.0.0-alpha.12",
     "js-md5": "^0.7.3",
-    "mavon-editor": "^2.7.3",
+    "mavon-editor": "^2.8.2",
     "mint-ui": "^2.2.13",
     "mongodb": "^3.2.2",
     "supervisor": "^0.12.0",
